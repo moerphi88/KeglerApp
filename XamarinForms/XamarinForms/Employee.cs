@@ -8,7 +8,9 @@ namespace XamarinForms
 {
     public class Employee
     {
-        public string ImageUri { get; set; }
+        public bool visible_full { get; set; }
+        public bool visible_seven { get; set; }
+        public bool visible_six { get; set; }
         public string DisplayName { get; set; }
         public string Twitter { get; set; }
     }
