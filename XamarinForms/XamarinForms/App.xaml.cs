@@ -13,9 +13,9 @@ namespace XamarinForms
         {
             InitializeComponent();
             Employees = new List<Employee>();
-            Employees.Add(new Employee { visible_full = true, visible_seven = false, visible_six = false, DisplayName = "Katze 1", Twitter = "sjdksjd" });
-            Employees.Add(new Employee { visible_full = false, visible_seven = true, visible_six = false, DisplayName = "Katze 2", Twitter = "sjdksjd" });
-            Employees.Add(new Employee { visible_full = false, visible_seven = false, visible_six = true, DisplayName = "Katze 3", Twitter = "sjdksjd" });
+            Employees.Add(new Employee { id = 0, visible_full = true, visible_seven = false, visible_six = false, DisplayName = "Katze 1", Twitter = "sjdksjd" });
+            Employees.Add(new Employee { id = 1, visible_full = false, visible_seven = true, visible_six = false, DisplayName = "Katze 2", Twitter = "sjdksjd" });
+            Employees.Add(new Employee { id = 2, visible_full = false, visible_seven = false, visible_six = true, DisplayName = "Katze 3", Twitter = "sjdksjd" });
             MainPage = new NavigationPage(new CallHistoryPage());
         }
 

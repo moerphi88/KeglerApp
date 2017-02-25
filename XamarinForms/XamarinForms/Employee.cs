@@ -13,5 +13,6 @@ namespace XamarinForms
         public bool visible_six { get; set; }
         public string DisplayName { get; set; }
         public string Twitter { get; set; }
+        public int id { get; set;}
     }
 }
