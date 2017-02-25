@@ -12,9 +12,7 @@
                     <ViewCell.View>
                         <StackLayout Orientation="Horizontal">
                             <!-- <Image Source="{Binding ImageUri}" WidthRequest="40" HeightRequest="40" />-->
-                            <Image IsVisible ="{Binding visible_full}" Source="{local:ImageResource XamarinForms.images.bug_full.png}" />
-                            <Image IsVisible ="{Binding visible_seven}" Source="{local:ImageResource XamarinForms.images.bug_seven.png}" />
-                            <Image IsVisible ="{Binding visible_six}" Source="{local:ImageResource XamarinForms.images.bug_six.png}" />
+                            <Image Source="{Binding imageName}" />
                             <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
                                 <Label Text="{Binding DisplayName}" HorizontalOptions="FillAndExpand" />
                                 <Label Text="{Binding Twitter}"/>
