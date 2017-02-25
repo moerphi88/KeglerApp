@@ -14,7 +14,7 @@
                      Orientation="Vertical"
                      Spacing="15">
             <Label Text="Welcome to ListView Test" />
-            <Button x:Name="callHistoryButton" Text="Call History" IsEnabled="false" Clicked="OnCallHistory" />
+            <Button x:Name="callHistoryButton" Text="Call History" IsEnabled="true" Clicked="OnCallHistory" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
