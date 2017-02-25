@@ -12,11 +12,13 @@ namespace XamarinForms
         public App()
         {
             InitializeComponent();
+
             Employees = new List<Employee>();
             Employees.Add(new Employee { imageName="bug_full.png", DisplayName = "Katze 1", Twitter = "sjdksjd" });
             Employees.Add(new Employee { imageName = "bug_seven.png", DisplayName = "Katze 2", Twitter = "sjdksjd" });
             Employees.Add(new Employee { imageName = "bug_six.png", DisplayName = "Katze 3", Twitter = "sjdksjd" });
-            MainPage = new NavigationPage(new CallHistoryPage());
+
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()

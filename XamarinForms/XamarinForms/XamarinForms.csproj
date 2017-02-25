@@ -43,7 +43,6 @@
     </Compile>
     <Compile Include="Employee.cs" />
     <Compile Include="IDialer.cs" />
-    <Compile Include="ImageResourceExtension.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
