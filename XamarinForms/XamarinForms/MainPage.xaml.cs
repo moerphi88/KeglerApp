@@ -33,16 +33,16 @@ namespace XamarinForms
                     "Dial a Number",
                     "Would you like to call " + translatedNumber + "?",
                     "Yes",
-                    "No"))
-            {
+                    "No")) ;
+            //{
                 var dialer = DependencyService.Get<IDialer>();
                 if (dialer != null)
                 {
-                    App.PhoneNumbers.Add(translatedNumber);
+                    //App.PhoneNumbers.Add(translatedNumber);
                     callHistoryButton.IsEnabled = true;
-                    dialer.Dial(translatedNumber);
+                    //dialer.Dial(translatedNumber);
                 }
-            }
+            //}
         }
 
         async void OnCallHistory(object sender, EventArgs e)

@@ -7,12 +7,15 @@ namespace XamarinForms
 {
     public partial class App : Application
     {
-        public static IList<string> PhoneNumbers { get; set; }
+        public static IList<Employee> Employees { get; set; }
 
         public App()
         {
             InitializeComponent();
-            PhoneNumbers = new List<string>();
+            Employees = new List<Employee>();
+            Employees.Add(new Employee { ImageUri = "http://ak.scr.imgfarm.com/cats/md/SuperStock_1566-0148948.jpg", DisplayName = "Katze 1", Twitter = "sjdksjd" });
+            Employees.Add(new Employee { ImageUri = "http://ak.scr.imgfarm.com/cats/md/SuperStock_1566-0148948.jpg", DisplayName = "Katze 2", Twitter = "sjdksjd" });
+            Employees.Add(new Employee { ImageUri = "http://ak.scr.imgfarm.com/cats/md/SuperStock_1566-0148948.jpg", DisplayName = "Katze 3", Twitter = "sjdksjd" });
             MainPage = new NavigationPage(new MainPage());
         }
 
