@@ -14,7 +14,8 @@
                      Orientation="Vertical"
                      Spacing="15">
             <Label Text="Welcome to ListView Test" />
-            <Button x:Name="callHistoryButton" Text="Start Bug Killer Game" IsEnabled="true" Clicked="OnClickStartBugKillerGame" />
+            <Button Text="Start Bug Killer Game" Clicked="OnClickStartBugKillerGame" />
+            <Button Text="Spieler hinzufügen" Clicked="OnClickAddKegler" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
