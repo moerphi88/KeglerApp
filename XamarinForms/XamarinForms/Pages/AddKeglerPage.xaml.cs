@@ -72,7 +72,7 @@ namespace XamarinForms
 
         void IncreaseCount()
         {
-            App.KeglerList.Add(new Kegler { imageName = "bug_six.png", DisplayName = Vorname, Twitter = Nachname });
+            App.KeglerList.Add(new Kegler { _imageUri = "bug_six.png", _vorname = Vorname, _nachname = Nachname });
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

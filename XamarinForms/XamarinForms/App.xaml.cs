@@ -14,18 +14,11 @@ namespace XamarinForms
             InitializeComponent();
 
             KeglerList = new List<Kegler>();
-            KeglerList.Add(new Kegler { imageName="bug_full.png", DisplayName = "Katze 1", Twitter = "sjdksjd" });
-            KeglerList.Add(new Kegler { imageName = "bug_seven.png", DisplayName = "Katze 2", Twitter = "sjdksjd" });
-            KeglerList.Add(new Kegler { imageName = "bug_six.png", DisplayName = "Katze 3", Twitter = "sjdksjd" });
-            KeglerList.Add(new Kegler { imageName = "bug_six.png", DisplayName = "Katze 4", Twitter = "sjdksjd" });
-            KeglerList.Add(new Kegler { imageName = "bug_six.png", DisplayName = "Katze 5", Twitter = "sjdksjd" });
-            KeglerList.Add(new Kegler { imageName = "bug_six.png", DisplayName = "Katze 6", Twitter = "sjdksjd" });
-            KeglerList.Add(new Kegler { imageName = "bug_six.png", DisplayName = "Katze 7", Twitter = "sjdksjd" });
-            KeglerList.Add(new Kegler { imageName = "bug_six.png", DisplayName = "Katze 8", Twitter = "sjdksjd" });
-            KeglerList.Add(new Kegler { imageName = "bug_six.png", DisplayName = "Katze 9", Twitter = "sjdksjd" });
-
-
-
+            KeglerList.Add(new Kegler { _imageUri="bug_full.png", _vorname = "Katze 1", _nachname = "sjdksjd" });
+            KeglerList.Add(new Kegler { _imageUri = "bug_seven.png", _vorname = "Katze 2", _nachname = "sjdksjd" });
+            KeglerList.Add(new Kegler { _imageUri = "bug_six.png", _vorname = "Katze 3", _nachname = "sjdksjd" });
+            KeglerList.Add(new Kegler { _imageUri = "bug_six.png", _vorname = "Katze 4", _nachname = "sjdksjd" });
+            
             MainPage = new NavigationPage(new Pages.MainPage());
         }
 

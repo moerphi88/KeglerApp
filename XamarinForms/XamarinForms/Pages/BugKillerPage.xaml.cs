@@ -20,7 +20,7 @@ namespace XamarinForms
         async void OnClick(object sender, EventArgs e)
         {
             await DisplayAlert("Clicked!", "The button labeled has been clicked", "OK");
-            App.KeglerList.Add(new Kegler { imageName = "bug_six.png", DisplayName = "Katze 9", Twitter = "sjdksjd" });
+            App.KeglerList.Add(new Kegler { _imageUri = "bug_six.png", _vorname = "Katze 9", _nachname = "sjdksjd" });
         }
     }
 }

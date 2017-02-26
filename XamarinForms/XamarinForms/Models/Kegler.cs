@@ -8,8 +8,8 @@ namespace XamarinForms
 {
     public class Kegler
     {
-        public string imageName { get; set; }
-        public string DisplayName { get; set; }
-        public string Twitter { get; set; }
+        public string _imageUri { get; set; }
+        public string _vorname { get; set; }
+        public string _nachname { get; set; }
     }
 }
