@@ -26,7 +26,7 @@ namespace XamarinForms
 
 
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new Pages.MainPage());
         }
 
         protected override void OnStart()
