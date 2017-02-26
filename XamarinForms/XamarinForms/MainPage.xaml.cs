@@ -5,6 +5,7 @@ namespace XamarinForms
 {
     public partial class MainPage : ContentPage
     {
+
         
 
         public MainPage()
@@ -15,6 +16,7 @@ namespace XamarinForms
         async void OnCallHistory(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CallHistoryPage());
+
         }
 
 

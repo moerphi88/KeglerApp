@@ -17,6 +17,14 @@ namespace XamarinForms
             Employees.Add(new Employee { imageName="bug_full.png", DisplayName = "Katze 1", Twitter = "sjdksjd" });
             Employees.Add(new Employee { imageName = "bug_seven.png", DisplayName = "Katze 2", Twitter = "sjdksjd" });
             Employees.Add(new Employee { imageName = "bug_six.png", DisplayName = "Katze 3", Twitter = "sjdksjd" });
+            Employees.Add(new Employee { imageName = "bug_six.png", DisplayName = "Katze 4", Twitter = "sjdksjd" });
+            Employees.Add(new Employee { imageName = "bug_six.png", DisplayName = "Katze 5", Twitter = "sjdksjd" });
+            Employees.Add(new Employee { imageName = "bug_six.png", DisplayName = "Katze 6", Twitter = "sjdksjd" });
+            Employees.Add(new Employee { imageName = "bug_six.png", DisplayName = "Katze 7", Twitter = "sjdksjd" });
+            Employees.Add(new Employee { imageName = "bug_six.png", DisplayName = "Katze 8", Twitter = "sjdksjd" });
+            Employees.Add(new Employee { imageName = "bug_six.png", DisplayName = "Katze 9", Twitter = "sjdksjd" });
+
+
 
             MainPage = new NavigationPage(new MainPage());
         }

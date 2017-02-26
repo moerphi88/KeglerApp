@@ -15,6 +15,12 @@ namespace XamarinForms
         public CallHistoryPage()
         {
             InitializeComponent();
-        }        
+        }
+
+        async void OnClick(object sender, EventArgs e)
+        {
+            await DisplayAlert("Clicked!", "The button labeled has been clicked", "OK");
+            App.Employees.Add(new Employee { imageName = "bug_six.png", DisplayName = "Katze 9", Twitter = "sjdksjd" });
+        }
     }
 }
