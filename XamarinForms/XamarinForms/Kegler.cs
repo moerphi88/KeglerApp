@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XamarinForms
 {
-    public class Employee
+    public class Kegler
     {
         public string imageName { get; set; }
         public string DisplayName { get; set; }

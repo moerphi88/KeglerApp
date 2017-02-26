@@ -38,15 +38,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CallHistoryPage.xaml.cs">
-      <DependentUpon>CallHistoryPage.xaml</DependentUpon>
+    <Compile Include="BugKillerPage.xaml.cs">
+      <DependentUpon>BugKillerPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Employee.cs" />
-    <Compile Include="IDialer.cs" />
+    <Compile Include="Kegler.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PhoneTranslator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -77,7 +75,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CallHistoryPage.xaml">
+    <EmbeddedResource Include="BugKillerPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -7,22 +7,22 @@ namespace XamarinForms
 {
     public partial class App : Application
     {
-        public static IList<Employee> Employees { get; set; }
+        public static IList<Kegler> KeglerList { get; set; }
 
         public App()
         {
             InitializeComponent();
 
-            Employees = new List<Employee>();
-            Employees.Add(new Employee { imageName="bug_full.png", DisplayName = "Katze 1", Twitter = "sjdksjd" });
-            Employees.Add(new Employee { imageName = "bug_seven.png", DisplayName = "Katze 2", Twitter = "sjdksjd" });
-            Employees.Add(new Employee { imageName = "bug_six.png", DisplayName = "Katze 3", Twitter = "sjdksjd" });
-            Employees.Add(new Employee { imageName = "bug_six.png", DisplayName = "Katze 4", Twitter = "sjdksjd" });
-            Employees.Add(new Employee { imageName = "bug_six.png", DisplayName = "Katze 5", Twitter = "sjdksjd" });
-            Employees.Add(new Employee { imageName = "bug_six.png", DisplayName = "Katze 6", Twitter = "sjdksjd" });
-            Employees.Add(new Employee { imageName = "bug_six.png", DisplayName = "Katze 7", Twitter = "sjdksjd" });
-            Employees.Add(new Employee { imageName = "bug_six.png", DisplayName = "Katze 8", Twitter = "sjdksjd" });
-            Employees.Add(new Employee { imageName = "bug_six.png", DisplayName = "Katze 9", Twitter = "sjdksjd" });
+            KeglerList = new List<Kegler>();
+            KeglerList.Add(new Kegler { imageName="bug_full.png", DisplayName = "Katze 1", Twitter = "sjdksjd" });
+            KeglerList.Add(new Kegler { imageName = "bug_seven.png", DisplayName = "Katze 2", Twitter = "sjdksjd" });
+            KeglerList.Add(new Kegler { imageName = "bug_six.png", DisplayName = "Katze 3", Twitter = "sjdksjd" });
+            KeglerList.Add(new Kegler { imageName = "bug_six.png", DisplayName = "Katze 4", Twitter = "sjdksjd" });
+            KeglerList.Add(new Kegler { imageName = "bug_six.png", DisplayName = "Katze 5", Twitter = "sjdksjd" });
+            KeglerList.Add(new Kegler { imageName = "bug_six.png", DisplayName = "Katze 6", Twitter = "sjdksjd" });
+            KeglerList.Add(new Kegler { imageName = "bug_six.png", DisplayName = "Katze 7", Twitter = "sjdksjd" });
+            KeglerList.Add(new Kegler { imageName = "bug_six.png", DisplayName = "Katze 8", Twitter = "sjdksjd" });
+            KeglerList.Add(new Kegler { imageName = "bug_six.png", DisplayName = "Katze 9", Twitter = "sjdksjd" });
 
 
 

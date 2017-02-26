@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:XamarinForms;assembly=XamarinForms"
              xmlns:constants="clr-namespace:XamarinForms;assembly=XamarinForms"
-             x:Class="XamarinForms.CallHistoryPage"
-             Title="Employee List">
+             x:Class="XamarinForms.BugKillerPage"
+             Title="Bug Killer - Game">
     <StackLayout>
-        <ListView x:Name="listView" IsVisible="true" ItemsSource="{x:Static local:App.Employees}" RowHeight = "60">
+        <ListView x:Name="listView" IsVisible="true" ItemsSource="{x:Static local:App.KeglerList}" RowHeight = "60">
             <!--ItemSelected="OnItemSelected">-->
             <ListView.ItemTemplate>
                 <DataTemplate>

@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace XamarinForms
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CallHistoryPage : ContentPage
+    public partial class BugKillerPage : ContentPage
     {
-        public CallHistoryPage()
+        public BugKillerPage()
         {
             InitializeComponent();
         }
@@ -20,7 +20,7 @@ namespace XamarinForms
         async void OnClick(object sender, EventArgs e)
         {
             await DisplayAlert("Clicked!", "The button labeled has been clicked", "OK");
-            App.Employees.Add(new Employee { imageName = "bug_six.png", DisplayName = "Katze 9", Twitter = "sjdksjd" });
+            App.KeglerList.Add(new Kegler { imageName = "bug_six.png", DisplayName = "Katze 9", Twitter = "sjdksjd" });
         }
     }
 }
