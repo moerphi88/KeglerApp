@@ -17,7 +17,7 @@ namespace XamarinForms.ViewModels
 
         public AddKeglerViewModel(DataService _dataService)
         {
-            IncreaseCountCommand = new Command(async () => await IncreaseCountAsync());
+            IncreaseCountCommand = new Command(async () => await AddKeglerAsync());
             dataService = _dataService;
         }
 
@@ -54,14 +54,14 @@ namespace XamarinForms.ViewModels
             }
         }
 
-        async Task IncreaseCountAsync()
+        async Task AddKeglerAsync()
         {
-            await Task.Run(() => IncreaseCount());
+            await Task.Run(() => AddKegler());
         }
 
-        void IncreaseCount()
+        void AddKegler()
         {
-            dataService.AddNames(Vorname + Nachname);
+            dataService.AddNames(new Kegler { _imageUri= "bug_full.png", _vorname=Vorname, _nachname=Nachname });
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

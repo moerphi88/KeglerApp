@@ -23,10 +23,10 @@ namespace XamarinForms.Views
             BindingContext = new KeglerListViewModel(_dataService);
         }
 
+        //Todo: Das muss noch als Command ins ViewModel gezogen werden!
         async void OnClickAddKegler(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddKeglerView(dataService));
-
         }
     }
 }

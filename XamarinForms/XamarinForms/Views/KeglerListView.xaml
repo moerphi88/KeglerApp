@@ -22,9 +22,18 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Label Text="{Binding}"
+                        <StackLayout
+                            VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal"
+                        Spacing="15">
+                        <Label Text="{Binding _vorname}"
                                TextColor="Navy"
                                FontSize="24"/>
+                            <Label Text="{Binding _nachname}"
+                               TextColor="Navy"
+                               FontSize="24"/>
+                        </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

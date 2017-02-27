@@ -8,9 +8,9 @@ namespace XamarinForms.ViewModels
 {
     public class KeglerListViewModel : INotifyPropertyChanged
     {
-        private ObservableCollection<string> _names;
+        private ObservableCollection<Kegler> _names;
 
-        public ObservableCollection<string> Names
+        public ObservableCollection<Kegler> Names
         {
             get
             {

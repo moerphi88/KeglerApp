@@ -9,7 +9,7 @@ namespace XamarinForms.Interfaces
 {
     interface IDataServices
     {
-        ObservableCollection<string> GetNames();
-        void AddNames(string s);
+        ObservableCollection<Kegler> GetNames();
+        void AddNames(Kegler k);
     }
 }
