@@ -29,5 +29,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button Text="Kegler hinzufügen" Clicked="OnClickAddKegler"/>
     </StackLayout>
 </ContentPage>

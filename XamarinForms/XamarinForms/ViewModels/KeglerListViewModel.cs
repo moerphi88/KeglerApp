@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using XamarinForms.Services;
@@ -7,9 +8,9 @@ namespace XamarinForms.ViewModels
 {
     public class KeglerListViewModel : INotifyPropertyChanged
     {
-        private List<string> _names;
+        private ObservableCollection<string> _names;
 
-        public List<string> Names
+        public ObservableCollection<string> Names
         {
             get
             {
@@ -28,11 +29,9 @@ namespace XamarinForms.ViewModels
             var dataService = _dataService;
 
             Names = dataService.GetNames();
-
         }
 
-
-
+ 
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

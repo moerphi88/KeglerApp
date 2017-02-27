@@ -14,10 +14,19 @@ namespace XamarinForms.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class KeglerListView : ContentPage
     {
+        DataService dataService;
+
         public KeglerListView(DataService _dataService)
         {
             InitializeComponent();
+            dataService = _dataService;
             BindingContext = new KeglerListViewModel(_dataService);
+        }
+
+        async void OnClickAddKegler(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddKeglerView(dataService));
+
         }
     }
 }
