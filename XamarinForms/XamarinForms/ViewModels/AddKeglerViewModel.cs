@@ -24,7 +24,6 @@ namespace XamarinForms.ViewModels
         string vorname = "Hans";
         string nachname = "Hansen";
 
-
         public ICommand IncreaseCountCommand { get; }
 
         public string Vorname
@@ -62,7 +61,6 @@ namespace XamarinForms.ViewModels
 
         void IncreaseCount()
         {
-            //App.KeglerList.Add(new Kegler { _imageUri = "bug_six.png", _vorname = Vorname, _nachname = Nachname });
             dataService.AddNames(Vorname + Nachname);
         }
 
