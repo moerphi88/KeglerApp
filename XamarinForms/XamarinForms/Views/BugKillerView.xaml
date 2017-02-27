@@ -27,7 +27,8 @@
                         HorizontalOptions="FillAndExpand"
                         Orientation="Horizontal"
                         Spacing="15">
-                        <Label Text="{Binding _vorname}"
+                            <Image Source="{Binding _imageUri}" WidthRequest="40" HeightRequest="40"/>
+                            <Label Text="{Binding _vorname}"
                                TextColor="Navy"
                                FontSize="24"/>
                             <Label Text="{Binding _nachname}"
@@ -38,6 +39,5 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Text="Kegler hinzufügen" Clicked="OnClickAddKegler"/>
     </StackLayout>
 </ContentPage>
