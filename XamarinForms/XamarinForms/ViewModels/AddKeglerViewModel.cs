@@ -6,29 +6,19 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using XamarinForms.Services;
 
-namespace XamarinForms
+namespace XamarinForms.ViewModels
 {
-
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Page1 : ContentPage
+    class AddKeglerViewModel : INotifyPropertyChanged
     {
-        public Page1()
-        {
-            InitializeComponent();
-            BindingContext = new Page1ViewModel();
-        }
-    }
+        public DataService dataService { get; set; }
 
-    class Page1ViewModel : INotifyPropertyChanged
-    {
-
-        public Page1ViewModel()
+        public AddKeglerViewModel(DataService _dataService)
         {
             IncreaseCountCommand = new Command(async () => await IncreaseCountAsync());
+            dataService = _dataService;
         }
 
         string vorname = "Hans";
@@ -72,7 +62,8 @@ namespace XamarinForms
 
         void IncreaseCount()
         {
-            App.KeglerList.Add(new Kegler { _imageUri = "bug_six.png", _vorname = Vorname, _nachname = Nachname });
+            //App.KeglerList.Add(new Kegler { _imageUri = "bug_six.png", _vorname = Vorname, _nachname = Nachname });
+            dataService.AddNames(Vorname + Nachname);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -80,4 +71,5 @@ namespace XamarinForms
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
     }
+
 }

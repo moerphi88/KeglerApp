@@ -33,7 +33,7 @@ namespace XamarinForms.Pages
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
-            await Navigation.PushAsync(new Page1());
+            //await Navigation.PushAsync(new AddKeglerView());
         }
     }
 
