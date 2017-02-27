@@ -18,13 +18,11 @@ namespace XamarinForms.Pages
         async void OnClickStartBugKillerGame(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new BugKillerView(dataService));
-
         }
 
         async void OnClickAddKegler(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new KeglerListView(dataService));
-
         }
         
 

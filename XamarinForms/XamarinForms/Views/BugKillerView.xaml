@@ -10,9 +10,10 @@
     </ContentPage.BindingContext> -->
 
     <StackLayout Orientation="Vertical"
-                 Padding="20">
+                 Padding="20"
+                 Spacing="20">
 
-        <Label Text="XamarinForms"
+        <Label Text="Bug Killer - Game"
                TextColor="Teal"
                Font="Bold"
                FontSize="30"/>
