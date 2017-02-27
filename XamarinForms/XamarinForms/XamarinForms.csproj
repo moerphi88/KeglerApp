@@ -39,6 +39,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IDataServices.cs" />
+    <Compile Include="Views\BugKillerView.xaml.cs">
+      <DependentUpon>BugKillerView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddKeglerPage.xaml.cs">
       <DependentUpon>AddKeglerPage.xaml</DependentUpon>
     </Compile>
@@ -59,6 +62,7 @@
     <Compile Include="Views\KeglerListView.xaml.cs">
       <DependentUpon>KeglerListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\BugKillerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\MainPage.xaml">
@@ -110,6 +114,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\KeglerListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\BugKillerView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
