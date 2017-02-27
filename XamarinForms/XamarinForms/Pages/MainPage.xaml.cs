@@ -23,7 +23,7 @@ namespace XamarinForms.Pages
 
         async void OnClickAddKegler(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MainView(dataService));
+            await Navigation.PushAsync(new KeglerListView(dataService));
 
         }
         

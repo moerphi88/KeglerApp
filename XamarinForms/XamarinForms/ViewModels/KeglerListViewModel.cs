@@ -5,7 +5,7 @@ using XamarinForms.Services;
 
 namespace XamarinForms.ViewModels
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class KeglerListViewModel : INotifyPropertyChanged
     {
         private List<string> _names;
 
@@ -23,7 +23,7 @@ namespace XamarinForms.ViewModels
             }
         }
 
-        public MainViewModel(DataService _dataService)
+        public KeglerListViewModel(DataService _dataService)
         {
             var dataService = _dataService;
 

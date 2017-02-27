@@ -12,12 +12,12 @@ using XamarinForms.ViewModels;
 namespace XamarinForms.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainView : ContentPage
+    public partial class KeglerListView : ContentPage
     {
-        public MainView(DataService _dataService)
+        public KeglerListView(DataService _dataService)
         {
             InitializeComponent();
-            BindingContext = new MainViewModel(_dataService);
+            BindingContext = new KeglerListViewModel(_dataService);
         }
     }
 }
