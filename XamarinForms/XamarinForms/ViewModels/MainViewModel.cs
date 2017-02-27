@@ -29,6 +29,7 @@ namespace XamarinForms.ViewModels
 
             Names = dataService.GetNames();
 
+            dataService.AddNames("Hut");
 
         }
 

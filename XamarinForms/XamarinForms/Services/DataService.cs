@@ -9,13 +9,24 @@ namespace XamarinForms.Services
 {
     public class DataService : IDataServices
     {
-        public List<string> GetNames()
+        public List<string> _names;
+
+        public DataService()
         {
-            var names = new List<string>
+            _names = new List<string>
             {
                 "Mohammes", "Hassan", "ali", "Denis"
             };
-            return names;
+        }
+
+        public void AddNames(string s)
+        {
+            _names.Add(s);
+        }
+
+        public List<string> GetNames()
+        {
+            return _names;
         }
 
         
