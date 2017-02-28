@@ -15,17 +15,29 @@ namespace XamarinForms.ViewModels
         private INavigation _navigation;
 
         private ObservableCollection<Kegler> _names;
-        public ICommand ItemTappedCommand { get; private set; }
-        public ICommand ItemSelectedCommand { get; private set; }
 
-        public ICommand AddKeglerCommand
+        private bool _isRefreshing = false;
+        public bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set
+            {
+                _isRefreshing = value;
+                OnPropertyChanged(nameof(IsRefreshing));
+            }
+        }
+
+        public ICommand RefreshCommand
         {
             get
             {
-                return new Command(async()=>
+                return new Command(async () =>
                 {
-                    //Do something here
-                    await _navigation.PushAsync(new AddKeglerView(_dataService));
+                    IsRefreshing = true;
+
+                    Names = _dataService.GetNames();
+
+                    IsRefreshing = false;
                 });
             }
         }
@@ -63,32 +75,3 @@ namespace XamarinForms.ViewModels
 }
 
 
-/*
- *  //Todo: Das muss noch als Command ins ViewModel gezogen werden!
-        async void OnClickAddKegler(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new AddKeglerView(dataService));
-        }
-
-        void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
-         => ((ListView)sender).SelectedItem = null;
-
-        async void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            if (e.SelectedItem == null)
-                return;
-
-            var k = (Kegler)e.SelectedItem;
-            change(k);
-            
-            await DisplayAlert("Selected", k._vorname, "OK");
-
-            //Deselect Item
-            ((ListView)sender).SelectedItem = null;
-        }
-
-        void change(Kegler k)
-        {
-            dataService.UpdateImage(k);
-        }
- * */

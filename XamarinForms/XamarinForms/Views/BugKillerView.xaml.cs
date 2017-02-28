@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -16,16 +17,15 @@ namespace XamarinForms.Views
     public partial class BugKillerView : ContentPage
     {
         DataService dataService;
+        BugKillerViewModel vm;
 
         public BugKillerView(DataService _dataService)
         {
             InitializeComponent();
             dataService = _dataService;
-            BindingContext = new BugKillerViewModel(_dataService, this.Navigation);
+            vm = new BugKillerViewModel(_dataService, this.Navigation);
+            BindingContext = vm;
         }
-
-        void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
-         => ((ListView)sender).SelectedItem = null;
 
         async void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
@@ -34,16 +34,22 @@ namespace XamarinForms.Views
 
             var k = (Kegler)e.SelectedItem;
             change(k);
-            
-            await DisplayAlert("Selected", k._vorname, "OK");
 
-            //Deselect Item
-            ((ListView)sender).SelectedItem = null;
+            // await DisplayAlert("Selected", k._vorname, "OK");
+            //dataService.GetNames();
+
         }
 
         void change(Kegler k)
         {
             dataService.UpdateImage(k);
+            ObservableCollection<Kegler> temp = new ObservableCollection<Kegler>();
+            foreach (Kegler item in vm.Names)
+            {
+                temp.Add(item);
+            }
+            vm.Names.Clear();
+            vm.Names = temp; // Hier muss ich nochmal versuchen nicht die ViewModel Names sondern meine allgemeinen Daten zu aktualisieren!
         }
     }
 }

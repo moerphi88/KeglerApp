@@ -20,8 +20,10 @@
                FontSize="30"/>
         <local:ListView   ItemsSource="{Binding Names}"
                     HasUnevenRows="true"
-                    ItemTapped="Handle_ItemTapped"
-                    ItemSelected="Handle_ItemSelected">
+                    ItemSelected="Handle_ItemSelected"
+                    IsPullToRefreshEnabled="True"
+                    RefreshCommand="{Binding RefreshCommand}"
+                    IsRefreshing="{Binding IsRefreshing}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

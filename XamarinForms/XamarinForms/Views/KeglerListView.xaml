@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:XamarinForms.ViewModels;assembly=XamarinForms"
+             xmlns:local="clr-namespace:XamarinForms.Controls;assembly=XamarinForms"
              x:Class="XamarinForms.Views.KeglerListView"
              BackgroundColor="White">
     
@@ -17,7 +18,7 @@
                Font="Bold"
                FontSize="30"/>
 
-        <ListView ItemsSource="{Binding Names}"
+        <local:ListView ItemsSource="{Binding Names}"
                   HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -37,7 +38,7 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
+        </local:ListView>
         <Button Text="Kegler hinzufügen" Command="{Binding AddKeglerCommand}" />
     </StackLayout>
 </ContentPage>
