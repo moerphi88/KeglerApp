@@ -2,6 +2,8 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
+using Xamarin.Forms;
 using XamarinForms.Services;
 
 namespace XamarinForms.ViewModels
@@ -9,6 +11,20 @@ namespace XamarinForms.ViewModels
     public class KeglerListViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<Kegler> _names;
+        private DataService _dataService;
+        private INavigation _navigation;
+
+        public ICommand AddKeglerCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    //Do something here
+                    await _navigation.PushAsync(new AddKeglerView(_dataService));
+                });
+            }
+        }
 
         public ObservableCollection<Kegler> Names
         {
@@ -24,11 +40,12 @@ namespace XamarinForms.ViewModels
             }
         }
 
-        public KeglerListViewModel(DataService _dataService)
+        public KeglerListViewModel(DataService dataService, INavigation navigation)
         {
-            var dataService = _dataService;
+            _navigation = navigation;
+            _dataService = dataService;
 
-            Names = dataService.GetNames();
+            Names = _dataService.GetNames();
         }
 
  

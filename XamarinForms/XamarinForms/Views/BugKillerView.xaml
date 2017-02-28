@@ -4,8 +4,8 @@
              xmlns:viewModels="clr-namespace:XamarinForms.ViewModels;assembly=XamarinForms"
              x:Class="XamarinForms.Views.BugKillerView"
              BackgroundColor="White">
-    
- <!--   <ContentPage.BindingContext>
+
+    <!--   <ContentPage.BindingContext>
         <viewModels:MainViewModel/>
     </ContentPage.BindingContext> -->
 
@@ -17,7 +17,6 @@
                TextColor="Teal"
                Font="Bold"
                FontSize="30"/>
-
         <ListView   ItemsSource="{Binding Names}"
                     HasUnevenRows="true"
                     ItemTapped="Handle_ItemTapped"

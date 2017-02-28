@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,19 +21,7 @@ namespace XamarinForms.Views
         {
             InitializeComponent();
             dataService = _dataService;
-            BindingContext = new BugKillerViewModel(_dataService);
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-        }
-
-        //Todo: Das muss noch als Command ins ViewModel gezogen werden!
-        async void OnClickAddKegler(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new AddKeglerView(dataService));
+            BindingContext = new BugKillerViewModel(_dataService, this.Navigation);
         }
 
         void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
