@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:XamarinForms.ViewModels;assembly=XamarinForms"
+             xmlns:local="clr-namespace:XamarinForms.Controls;assembly=XamarinForms"
              x:Class="XamarinForms.Views.BugKillerView"
              BackgroundColor="White">
 
@@ -17,7 +18,7 @@
                TextColor="Teal"
                Font="Bold"
                FontSize="30"/>
-        <ListView   ItemsSource="{Binding Names}"
+        <local:ListView   ItemsSource="{Binding Names}"
                     HasUnevenRows="true"
                     ItemTapped="Handle_ItemTapped"
                     ItemSelected="Handle_ItemSelected">
@@ -40,6 +41,6 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
+        </local:ListView>
     </StackLayout>
 </ContentPage>

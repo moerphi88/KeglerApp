@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ListView.cs" />
     <Compile Include="Helper\BugKillerGameHelper.cs" />
     <Compile Include="Interfaces\IDataServices.cs" />
     <Compile Include="Views\BugKillerView.xaml.cs">
