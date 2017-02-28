@@ -18,8 +18,10 @@
                Font="Bold"
                FontSize="30"/>
 
-        <ListView ItemsSource="{Binding Names}"
-                  HasUnevenRows="true">
+        <ListView   ItemsSource="{Binding Names}"
+                    HasUnevenRows="true"
+                    ItemTapped="Handle_ItemTapped"
+                    ItemSelected="Handle_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
