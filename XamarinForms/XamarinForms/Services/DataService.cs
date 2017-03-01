@@ -31,7 +31,8 @@ namespace XamarinForms.Services
         {
             foreach(Kegler name in _names)
             {
-                name._imageUri = "bug_seven.png";
+                if(name == k)
+                    name._imageUri = "bug_seven.png";
             }
         }
 

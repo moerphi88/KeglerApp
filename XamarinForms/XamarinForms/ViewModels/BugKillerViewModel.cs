@@ -35,7 +35,7 @@ namespace XamarinForms.ViewModels
                 {
                     IsRefreshing = true;
 
-                    _dataService.UpdateList();
+                   _dataService.UpdateList();
 
                     IsRefreshing = false;
                 });

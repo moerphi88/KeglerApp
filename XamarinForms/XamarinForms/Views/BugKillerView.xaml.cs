@@ -26,6 +26,9 @@ namespace XamarinForms.Views
                 return;
 
             var k = (Kegler)e.SelectedItem;
+
+            dataService.UpdateImage(k);
+
             dataService.UpdateList();
 
             // await DisplayAlert("Selected", k._vorname, "OK");
