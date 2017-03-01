@@ -12,8 +12,8 @@ namespace XamarinForms.Services
         public DataService()
         {
             _names = new ObservableCollection<Kegler>();
-            _names.Add(new Kegler { _initialWurf=0,_imageUri = "bug_full.png", _vorname = "Anja", _nachname = "SL" });
-            _names.Add(new Kegler { _initialWurf = 1, _imageUri = "bug_full.png", _vorname = "Johannes", _nachname = "Watermann" });
+            _names.Add(new Kegler { _leben = 8, _initialWurf=0,_imageUri = "bug_full.png", _vorname = "Anja", _nachname = "SL" });
+            _names.Add(new Kegler { _leben = 8, _initialWurf = 1, _imageUri = "bug_full.png", _vorname = "Johannes", _nachname = "Watermann" });
         }
         
         
@@ -31,8 +31,23 @@ namespace XamarinForms.Services
         {
             foreach(Kegler name in _names)
             {
-                if(name == k)
-                    name._imageUri = "bug_seven.png";
+                if (name == k)
+
+                    if(name._leben >= 0) name._leben = name._leben - 1;
+                
+                    switch (name._leben)
+                    {
+                        case 8: name._imageUri = "bug_full.png"; break;
+                        case 7: name._imageUri = "bug_seven.png"; break;
+                        case 6: name._imageUri = "bug_six.png"; break;
+                        case 5: name._imageUri = "bug_five.png"; break;
+                        case 4: name._imageUri = "bug_four.png"; break;
+                        case 3: name._imageUri = "bug_three.png"; break;
+                        case 2: name._imageUri = "bug_two.png"; break;
+                        case 1: name._imageUri = "bug_one.png"; break;
+                        case 0: name._imageUri = "bug_dead.png"; break;
+                    }
+                    
             }
         }
 

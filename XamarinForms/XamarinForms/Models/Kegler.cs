@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace XamarinForms
+﻿namespace XamarinForms
 {
     public class Kegler
     {
@@ -12,5 +6,7 @@ namespace XamarinForms
         public string _vorname { get; set; }
         public string _nachname { get; set; }
         public int _initialWurf { get; set; }
+        public int _leben { get;set; }
+
     }
 }

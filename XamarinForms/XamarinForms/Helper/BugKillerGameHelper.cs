@@ -8,8 +8,9 @@ namespace XamarinForms.Helper
 {
     class BugKillerGameHelper
     {
-        void ChangeImageUri()
+        void ChangeImageUri(int currentImage)
         {
+            
 
         }
     }

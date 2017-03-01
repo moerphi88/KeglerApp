@@ -8,7 +8,7 @@ namespace XamarinForms
 {
     public partial class App : Application
     {
-        public static IList<Kegler> KeglerList { get; set; }
+        public static IList<Kegler> KeglerList { get; set; } //Todo Löschen
         public static DataService dataService {get; set;}
 
         public App()
