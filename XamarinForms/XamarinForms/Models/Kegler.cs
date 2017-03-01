@@ -11,6 +11,6 @@ namespace XamarinForms
         public string _imageUri { get; set; }
         public string _vorname { get; set; }
         public string _nachname { get; set; }
-        public int id { get; set; }
+        public int _initialWurf { get; set; }
     }
 }

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XamarinForms.Services;
@@ -33,23 +26,13 @@ namespace XamarinForms.Views
                 return;
 
             var k = (Kegler)e.SelectedItem;
-            change(k);
+            dataService.UpdateList();
 
             // await DisplayAlert("Selected", k._vorname, "OK");
             //dataService.GetNames();
 
         }
 
-        void change(Kegler k)
-        {
-            dataService.UpdateImage(k);
-            ObservableCollection<Kegler> temp = new ObservableCollection<Kegler>();
-            foreach (Kegler item in vm.Names)
-            {
-                temp.Add(item);
-            }
-            vm.Names.Clear();
-            vm.Names = temp; // Hier muss ich nochmal versuchen nicht die ViewModel Names sondern meine allgemeinen Daten zu aktualisieren!
-        }
+       
     }
 }
