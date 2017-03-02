@@ -61,7 +61,7 @@ namespace XamarinForms.ViewModels
 
         void AddKegler()
         {
-            dataService.AddNames(new Kegler { _leben = 8, _initialWurf=2, _imageUri= "bug_full.png", _vorname=Vorname, _nachname=Nachname });
+            dataService.AddNames(new Kegler { _isActive = false, _leben = 8, _initialWurf=2, _imageUri= "bug_full.png", _vorname=Vorname, _nachname=Nachname });
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

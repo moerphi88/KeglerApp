@@ -12,8 +12,8 @@ namespace XamarinForms.Services
         public DataService()
         {
             _names = new ObservableCollection<Kegler>();
-            _names.Add(new Kegler { _leben = 8, _initialWurf=0,_imageUri = "bug_full.png", _vorname = "Anja", _nachname = "SL" });
-            _names.Add(new Kegler { _leben = 8, _initialWurf = 1, _imageUri = "bug_full.png", _vorname = "Johannes", _nachname = "Watermann" });
+            _names.Add(new Kegler { _isActive = false, _leben = 8, _initialWurf = 0, _imageUri = "bug_full.png", _vorname = "Anja", _nachname = "SL" });
+            _names.Add(new Kegler { _isActive = false, _leben = 8, _initialWurf = 0, _imageUri = "bug_full.png", _vorname = "Johannes", _nachname = "Watermann" });
         }
         
         

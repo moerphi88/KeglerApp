@@ -7,6 +7,7 @@
         public string _nachname { get; set; }
         public int _initialWurf { get; set; }
         public int _leben { get;set; }
+        public bool _isActive { get; set; }
 
     }
 }
