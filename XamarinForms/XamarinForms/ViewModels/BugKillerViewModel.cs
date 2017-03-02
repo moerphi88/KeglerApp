@@ -1,4 +1,5 @@
 ﻿using Android.Views;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -16,6 +17,21 @@ namespace XamarinForms.ViewModels
 
         private ObservableCollection<Kegler> _names;
 
+        private string kegelWurf = "0";
+        public string KegelWurf
+        {
+            get
+            {
+                return kegelWurf;
+            }
+
+            set
+            {
+                kegelWurf = value;
+                OnPropertyChanged();
+            }
+        }
+
         private bool _isRefreshing = false;
         public bool IsRefreshing
         {
@@ -25,6 +41,21 @@ namespace XamarinForms.ViewModels
                 _isRefreshing = value;
                 OnPropertyChanged(nameof(IsRefreshing));
             }
+        }
+
+        public ICommand NextClickedCommand
+        {
+            get
+            {
+                return new Command(NextKegler);
+            }
+        }
+
+        void NextKegler()
+        {
+            _names[0]._isActive = true;
+            _names[0]._initialWurf = Convert.ToInt32(kegelWurf);
+            _dataService.UpdateList();
         }
 
         public ICommand RefreshCommand
@@ -63,8 +94,7 @@ namespace XamarinForms.ViewModels
 
             Names = _dataService.GetNames();
         }
-
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

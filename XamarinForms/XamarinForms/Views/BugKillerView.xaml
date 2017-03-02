@@ -17,7 +17,8 @@
         <Label Text="Bug Killer - Game"
                TextColor="Teal"
                Font="Bold"
-               FontSize="30"/>
+               FontSize="30"
+               HorizontalOptions="Center"/>
         <local:ListView   ItemsSource="{Binding Names}"
                     HasUnevenRows="true"
                     ItemSelected="Handle_ItemSelected"
@@ -52,5 +53,12 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </local:ListView>
+        <StackLayout 
+                 Orientation="Horizontal"
+                 Padding="20"
+                 Spacing="20">
+            <Entry Text="{Binding KegelWurf,Mode=TwoWay }" Keyboard="Numeric"/>
+            <Button Text="Next" Command="{Binding NextClickedCommand}" />
+        </StackLayout>
     </StackLayout>
 </ContentPage>
