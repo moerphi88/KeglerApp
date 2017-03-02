@@ -29,16 +29,24 @@
                     <ViewCell>
                         <StackLayout
                             VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
+                        HorizontalOptions="Fill"
                         Orientation="Horizontal"
                         Spacing="15">
-                            <Image Source="{Binding _imageUri}" WidthRequest="40" HeightRequest="40"/>
+                            <Image Source="{Binding _imageUri}"
+                                   HeightRequest="70"
+                                   WidthRequest="70"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center"/>
                             <Label Text="{Binding _vorname}"
                                TextColor="Navy"
-                               FontSize="24"/>
-                            <Label Text="{Binding _nachname}"
+                               FontSize="24"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                            <Label Text="{Binding _initialWurf,StringFormat='{0}' }"
                                TextColor="Navy"
-                               FontSize="24"/>
+                               FontSize="24"
+                               HorizontalOptions="End"
+                                   VerticalOptions="Center"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
