@@ -47,7 +47,7 @@
                                TextColor="Navy"
                                FontSize="24"
                                HorizontalOptions="End"
-                                   VerticalOptions="Center"/>
+                               VerticalOptions="Center"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
@@ -57,7 +57,7 @@
                  Orientation="Horizontal"
                  Padding="20"
                  Spacing="20">
-            <Entry Text="{Binding KegelWurf,Mode=TwoWay }" Keyboard="Numeric"/>
+            <Entry Text="{Binding KegelWurf, Mode=TwoWay}" Keyboard="Numeric"/>
             <Button Text="Next" Command="{Binding NextClickedCommand}" />
         </StackLayout>
     </StackLayout>

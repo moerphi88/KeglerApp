@@ -11,7 +11,7 @@ namespace XamarinForms.Interfaces
     {
         ObservableCollection<Kegler> GetNames();
         void AddNames(Kegler k);
-        void UpdateImage(Kegler k);
+        void EvaluateWurf(int wurf);
         void UpdateList();
     }
 }

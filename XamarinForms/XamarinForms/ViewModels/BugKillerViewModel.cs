@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
 using XamarinForms.Services;
+using System.Threading.Tasks;
 
 namespace XamarinForms.ViewModels
 {
@@ -14,10 +15,14 @@ namespace XamarinForms.ViewModels
     {
         private DataService _dataService;
         private INavigation _navigation;
+        private int _activeKegler = 0;
+        private bool _isInitialRound = true;
+
+
 
         private ObservableCollection<Kegler> _names;
 
-        private string kegelWurf = "0";
+        private string kegelWurf = "";
         public string KegelWurf
         {
             get
@@ -51,12 +56,32 @@ namespace XamarinForms.ViewModels
             }
         }
 
-        void NextKegler()
+        async void NextKegler()
         {
-            _names[0]._isActive = true;
-            _names[0]._initialWurf = Convert.ToInt32(kegelWurf);
+            if (_isInitialRound)
+            {
+                _names[_activeKegler]._isActive = true;
+                _names[_activeKegler]._initialWurf = Convert.ToInt32(kegelWurf);
+            }
+            if (!_isInitialRound) //Das Spiel beginnt!
+            {
+                _dataService.EvaluateWurf(Convert.ToInt32(kegelWurf));
+            }
+            _activeKegler++;
+
+            if(_isInitialRound && _activeKegler == Names.Count)
+            {
+                //Irgendwann einmal ein Dialog hier anzeigen
+                var answer = await App.Current.MainPage.DisplayAlert("Initialrunde beendet!", "Möchtet Ihr die Runde nochmal machen?", "Yes", "No");
+                if(!answer) _isInitialRound = false;
+            }
+
+            if (_activeKegler >= Names.Count) _activeKegler = 0;
+
             _dataService.UpdateList();
         }
+
+
 
         public ICommand RefreshCommand
         {
@@ -66,7 +91,7 @@ namespace XamarinForms.ViewModels
                 {
                     IsRefreshing = true;
 
-                   _dataService.UpdateList();
+                    _dataService.UpdateList();
 
                     IsRefreshing = false;
                 });
@@ -94,7 +119,7 @@ namespace XamarinForms.ViewModels
 
             Names = _dataService.GetNames();
         }
-        
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

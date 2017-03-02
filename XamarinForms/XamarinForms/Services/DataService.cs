@@ -15,8 +15,8 @@ namespace XamarinForms.Services
             _names.Add(new Kegler { _isActive = false, _leben = 8, _initialWurf = 0, _imageUri = "bug_full.png", _vorname = "Anja", _nachname = "SL" });
             _names.Add(new Kegler { _isActive = false, _leben = 8, _initialWurf = 0, _imageUri = "bug_full.png", _vorname = "Johannes", _nachname = "Watermann" });
         }
-        
-        
+
+
         public void AddNames(Kegler k)
         {
             _names.Add(k);
@@ -27,27 +27,37 @@ namespace XamarinForms.Services
             return _names;
         }
 
-        public void UpdateImage(Kegler k)
+        public void EvaluateWurf(int wurf)
         {
-            foreach(Kegler name in _names)
+            if(wurf == 0)
             {
-                if (name == k)
 
-                    if(name._leben >= 0) name._leben = name._leben - 1;
-                
-                    switch (name._leben)
-                    {
-                        case 8: name._imageUri = "bug_full.png"; break;
-                        case 7: name._imageUri = "bug_seven.png"; break;
-                        case 6: name._imageUri = "bug_six.png"; break;
-                        case 5: name._imageUri = "bug_five.png"; break;
-                        case 4: name._imageUri = "bug_four.png"; break;
-                        case 3: name._imageUri = "bug_three.png"; break;
-                        case 2: name._imageUri = "bug_two.png"; break;
-                        case 1: name._imageUri = "bug_one.png"; break;
-                        case 0: name._imageUri = "bug_dead.png"; break;
-                    }
-                    
+            }
+
+            foreach (Kegler kegler in _names)
+            {
+                if (kegler._initialWurf == wurf)
+                {
+                    kegler._leben--;
+                    ChangeImage(kegler);
+                }
+            }
+        }
+
+        private void ChangeImage(Kegler kegler)
+        {
+            switch (kegler._leben)
+            {
+                case 8: kegler._imageUri = "bug_full.png"; break;
+                case 7: kegler._imageUri = "bug_seven.png"; break;
+                case 6: kegler._imageUri = "bug_six.png"; break;
+                case 5: kegler._imageUri = "bug_five.png"; break;
+                case 4: kegler._imageUri = "bug_four.png"; break;
+                case 3: kegler._imageUri = "bug_three.png"; break;
+                case 2: kegler._imageUri = "bug_two.png"; break;
+                case 1: kegler._imageUri = "bug_one.png"; break;
+                case 0: kegler._imageUri = "bug_dead.png"; break;
+                default: kegler._leben = 0; break;
             }
         }
 

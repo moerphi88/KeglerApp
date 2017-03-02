@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XamarinForms.Services;
@@ -25,17 +26,34 @@ namespace XamarinForms.Views
             if (e.SelectedItem == null)
                 return;
 
-            var k = (Kegler)e.SelectedItem;
+            //var k = (Kegler)e.SelectedItem;
 
-            dataService.UpdateImage(k);
+           // dataService.UpdateImage(k);
 
-            dataService.UpdateList();
+            //dataService.UpdateList();
 
-            // await DisplayAlert("Selected", k._vorname, "OK");
-            //dataService.GetNames();
+            //await DisplayAlert("Selected", k._vorname, "OK");
 
         }
 
-       
+        // Scheint iwie nicht zu funktionieren :(
+        void Handle_KegelWurfEntry(object sender, TextChangedEventArgs e)
+        {
+            int newValue = Convert.ToInt32(e.NewTextValue);
+            Entry ent = (Entry)sender;
+            try
+            {
+                if (newValue < 0 || newValue > 9)
+                {
+                    ent.Text = "";
+                }
+            } catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.StackTrace);
+            }        
+
+        }
+
+
     }
 }
