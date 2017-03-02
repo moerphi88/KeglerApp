@@ -18,8 +18,6 @@ namespace XamarinForms.ViewModels
         private int _activeKegler = 0;
         private bool _isInitialRound = true;
 
-
-
         private ObservableCollection<Kegler> _names;
 
         private string kegelWurf = "";
