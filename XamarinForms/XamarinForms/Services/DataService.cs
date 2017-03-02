@@ -29,17 +29,29 @@ namespace XamarinForms.Services
 
         public void EvaluateWurf(int wurf)
         {
-            if(wurf == 0)
+            //Pudel
+            if (wurf == 0)
             {
+                foreach (Kegler kegler in _names)
+                {
+                    if (kegler._isActive)
+                    {
+                        kegler._leben--;
+                        ChangeImage(kegler);
+                    }
+                }
 
             }
-
-            foreach (Kegler kegler in _names)
+            else
             {
-                if (kegler._initialWurf == wurf)
+                //Normaler Wurf
+                foreach (Kegler kegler in _names)
                 {
-                    kegler._leben--;
-                    ChangeImage(kegler);
+                    if (kegler._initialWurf == wurf)
+                    {
+                        kegler._leben--;
+                        ChangeImage(kegler);
+                    }
                 }
             }
         }

@@ -60,11 +60,11 @@ namespace XamarinForms.ViewModels
         {
             if (_isInitialRound)
             {
-                _names[_activeKegler]._isActive = true;
                 _names[_activeKegler]._initialWurf = Convert.ToInt32(kegelWurf);
             }
             if (!_isInitialRound) //Das Spiel beginnt!
             {
+                _names[_activeKegler]._isActive = true;
                 _dataService.EvaluateWurf(Convert.ToInt32(kegelWurf));
             }
             _activeKegler++;
@@ -79,7 +79,12 @@ namespace XamarinForms.ViewModels
             if (_activeKegler >= Names.Count) _activeKegler = 0;
 
             _dataService.UpdateList();
+
+            //If we start the activeKegler from the begining, we must set the last element of the list to not active. Otherwise we can take the last one with activeKegler - 1
+            if(_activeKegler == 0) _names[Names.Count-1]._isActive = false;
+            else _names[_activeKegler-1]._isActive = false;
         }
+
 
 
 
