@@ -21,6 +21,11 @@ namespace XamarinForms.Views
             BindingContext = vm;
         }
 
+        public BugKillerView()
+        {
+
+        }
+
         async void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem == null)
@@ -39,18 +44,21 @@ namespace XamarinForms.Views
         // Scheint iwie nicht zu funktionieren :(
         void Handle_KegelWurfEntry(object sender, TextChangedEventArgs e)
         {
-            int newValue = Convert.ToInt32(e.NewTextValue);
-            Entry ent = (Entry)sender;
-            try
+            if (e.NewTextValue != "")
             {
-                if (newValue < 0 || newValue > 9)
+                int newValue = Convert.ToInt32(e.NewTextValue);
+                try
                 {
-                    ent.Text = "";
+                    if (newValue < 0 || newValue > 9)
+                    {
+                        vm.KegelWurf = "0";
+                    }
                 }
-            } catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.StackTrace);
-            }        
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.StackTrace);
+                }
+            } 
 
         }
 

@@ -20,7 +20,7 @@ namespace XamarinForms.ViewModels
 
         private ObservableCollection<Kegler> _names;
 
-        private string kegelWurf = "";
+        private string kegelWurf = "0";
         public string KegelWurf
         {
             get
@@ -56,31 +56,43 @@ namespace XamarinForms.ViewModels
 
         async void NextKegler()
         {
-            if (_isInitialRound)
+            var wurf = Convert.ToInt32(KegelWurf);
+            if (wurf >= 0 && wurf <= 9)
             {
-                _names[_activeKegler]._initialWurf = Convert.ToInt32(kegelWurf);
-            }
-            if (!_isInitialRound) //Das Spiel beginnt!
+
+                if (_isInitialRound)
+                {
+                    _names[_activeKegler]._initialWurf = Convert.ToInt32(kegelWurf);
+                }
+                if (!_isInitialRound) //Das Spiel beginnt!
+                {
+                    _names[_activeKegler]._isActive = true;
+                    _dataService.EvaluateWurf(Convert.ToInt32(kegelWurf));
+                }
+                _activeKegler++;
+
+                if (_isInitialRound && _activeKegler == Names.Count)
+                {
+                    //Irgendwann einmal ein Dialog hier anzeigen
+                    var answer = await App.Current.MainPage.DisplayAlert("Initialrunde beendet!", "Möchtet Ihr die Runde nochmal machen?", "Yes", "No");
+                    if (!answer) _isInitialRound = false;
+                }
+
+                if (_activeKegler >= Names.Count) _activeKegler = 0;
+
+                _dataService.UpdateList();
+
+                //If we start the activeKegler from the begining, we must set the last element of the list to not active. Otherwise we can take the last one with activeKegler - 1
+                if (_activeKegler == 0) _names[Names.Count - 1]._isActive = false;
+                else _names[_activeKegler - 1]._isActive = false;
+            } else
             {
-                _names[_activeKegler]._isActive = true;
-                _dataService.EvaluateWurf(Convert.ToInt32(kegelWurf));
-            }
-            _activeKegler++;
-
-            if(_isInitialRound && _activeKegler == Names.Count)
-            {
-                //Irgendwann einmal ein Dialog hier anzeigen
-                var answer = await App.Current.MainPage.DisplayAlert("Initialrunde beendet!", "Möchtet Ihr die Runde nochmal machen?", "Yes", "No");
-                if(!answer) _isInitialRound = false;
+                await App.Current.MainPage.DisplayAlert("Halt! Stop!", "Wusstest du nicht, dass beim Kegeln nur 9 Kegel fallen können?! Angeber!", "Ok");
+                KegelWurf = "0";
             }
 
-            if (_activeKegler >= Names.Count) _activeKegler = 0;
 
-            _dataService.UpdateList();
 
-            //If we start the activeKegler from the begining, we must set the last element of the list to not active. Otherwise we can take the last one with activeKegler - 1
-            if(_activeKegler == 0) _names[Names.Count-1]._isActive = false;
-            else _names[_activeKegler-1]._isActive = false;
         }
 
 
