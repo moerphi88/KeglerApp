@@ -19,13 +19,13 @@
                Font="Bold"
                FontSize="30"
                HorizontalOptions="Center"/>
-        <ListView   ItemsSource="{Binding Names}"
+        <local:ListView   ItemsSource="{Binding Names}"
                     HasUnevenRows="true"
                     ItemSelected="Handle_ItemSelected"
                     IsPullToRefreshEnabled="True"
                     RefreshCommand="{Binding RefreshCommand}"
                     IsRefreshing="{Binding IsRefreshing}">
-            <local:ListView.ItemTemplate>
+            <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout
@@ -51,8 +51,8 @@
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
-            </local:ListView.ItemTemplate>
-        </ListView>
+            </ListView.ItemTemplate>
+        </local:ListView>
         <StackLayout 
                  Orientation="Horizontal"
                  Padding="5"

@@ -23,18 +23,11 @@ namespace XamarinForms.Views
             BindingContext = new KeglerListViewModel(_dataService, this.Navigation);
         }
 
-        public void OnMore(object sender, EventArgs e)
-        {
-            var mi = ((MenuItem)sender);
-            //DisplayAlert("More Context Action", mi.CommandParameter + " more context action", "OK");
-        }
-
         public void OnDelete(object sender, EventArgs e)
         {
             var mi = ((MenuItem)sender);
             var kegler = (Kegler)mi.CommandParameter;
             dataService.DeleteName(kegler);
-            //DisplayAlert("Delete Context Action", mi.CommandParameter + " delete context action", "OK");
         }
     }
 }

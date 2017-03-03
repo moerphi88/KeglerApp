@@ -21,23 +21,13 @@ namespace XamarinForms.Views
             BindingContext = vm;
         }
 
-        public BugKillerView()
-        {
+        //Standard constructor
+        public BugKillerView() { }
 
-        }
-
-        async void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem == null)
                 return;
-
-            //var k = (Kegler)e.SelectedItem;
-
-           // dataService.UpdateImage(k);
-
-            //dataService.UpdateList();
-
-            //await DisplayAlert("Selected", k._vorname, "OK");
 
         }
 

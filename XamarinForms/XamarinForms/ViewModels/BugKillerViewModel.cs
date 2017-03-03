@@ -85,7 +85,8 @@ namespace XamarinForms.ViewModels
                 //If we start the activeKegler from the begining, we must set the last element of the list to not active. Otherwise we can take the last one with activeKegler - 1
                 if (_activeKegler == 0) _names[Names.Count - 1]._isActive = false;
                 else _names[_activeKegler - 1]._isActive = false;
-            } else
+            }
+            else
             {
                 await App.Current.MainPage.DisplayAlert("Halt! Stop!", "Wusstest du nicht, dass beim Kegeln nur 9 Kegel fallen können?! Angeber!", "Ok");
                 KegelWurf = "0";
@@ -106,7 +107,7 @@ namespace XamarinForms.ViewModels
                 {
                     IsRefreshing = true;
 
-                    _dataService.UpdateList();
+                    await Task.Run(() => _dataService.UpdateList());
 
                     IsRefreshing = false;
                 });

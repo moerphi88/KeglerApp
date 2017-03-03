@@ -5,8 +5,7 @@ namespace XamarinForms.Controls
 {
     public class ListView : Xamarin.Forms.ListView
     {
-        public static BindableProperty ItemClickCommandProperty =
-            BindableProperty.Create<ListView, ICommand>(x => x.ItemClickCommand, null);
+        public static BindableProperty ItemClickCommandProperty = BindableProperty.Create<ListView, ICommand>(x => x.ItemClickCommand, null);
 
         public ListView()
         {
