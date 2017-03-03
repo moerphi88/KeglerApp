@@ -15,8 +15,7 @@ namespace XamarinForms.Services
             _names.Add(new Kegler { _isActive = false, _leben = 8, _initialWurf = 0, _imageUri = "bug_full.png", _vorname = "Anja", _nachname = "SL" });
             _names.Add(new Kegler { _isActive = false, _leben = 8, _initialWurf = 0, _imageUri = "bug_full.png", _vorname = "Johannes", _nachname = "Watermann" });
         }
-
-
+        
         public void AddNames(Kegler k)
         {
             _names.Add(k);
@@ -88,6 +87,11 @@ namespace XamarinForms.Services
             {
                 _names.Add(item);
             }
+        }
+
+        public void DeleteName(Kegler k)
+        {
+            _names.Remove(k);
         }
     }
 }
