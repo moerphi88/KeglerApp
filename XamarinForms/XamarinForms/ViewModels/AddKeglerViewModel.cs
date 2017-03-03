@@ -13,19 +13,24 @@ namespace XamarinForms.ViewModels
 {
     class AddKeglerViewModel : INotifyPropertyChanged
     {
-        public DataService dataService { get; set; }
+        public DataService _dataService { get; set; }
+        private INavigation _navigation { get; }
+        public ICommand IncreaseCountCommand { get; }
 
-        public AddKeglerViewModel(DataService _dataService)
+        public AddKeglerViewModel(DataService dataService, INavigation navigation)
         {
+            _dataService = dataService;
+            _navigation = navigation;
             IncreaseCountCommand = new Command(async () => await AddKeglerAsync());
-            dataService = _dataService;
+        }
+
+        async Task AddKeglerAsync()
+        {
+            _dataService.AddNames(new Kegler { _isActive = false, _leben = 8, _initialWurf = 0, _imageUri = "bug_full.png", _vorname = Vorname, _nachname = Nachname });
+            await _navigation.PopModalAsync();
         }
 
         string vorname = "Hans";
-        string nachname = "Hansen";
-
-        public ICommand IncreaseCountCommand { get; }
-
         public string Vorname
         {
             get
@@ -40,6 +45,7 @@ namespace XamarinForms.ViewModels
             }
         }
 
+        string nachname = "Hansen";
         public string Nachname
         {
             get
@@ -54,19 +60,13 @@ namespace XamarinForms.ViewModels
             }
         }
 
-        async Task AddKeglerAsync()
-        {
-            await Task.Run(() => AddKegler());
-        }
-
-        void AddKegler()
-        {
-            dataService.AddNames(new Kegler { _isActive = false, _leben = 8, _initialWurf=2, _imageUri= "bug_full.png", _vorname=Vorname, _nachname=Nachname });
-        }
+        #region INotifyPropertyChanges Handler
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         void OnPropertyChanged([CallerMemberName]string propertyName = "") =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); 
+        #endregion
 
     }
 

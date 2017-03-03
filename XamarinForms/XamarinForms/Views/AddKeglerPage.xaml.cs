@@ -12,7 +12,7 @@ namespace XamarinForms
         public AddKeglerView(DataService _dataService)
         {
             InitializeComponent();
-            BindingContext = new AddKeglerViewModel(_dataService);
+            BindingContext = new AddKeglerViewModel(_dataService, this.Navigation);
         }
     }
     

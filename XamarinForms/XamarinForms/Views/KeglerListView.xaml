@@ -43,6 +43,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </local:ListView>
-        <Button Text="Kegler hinzufügen" Command="{Binding AddKeglerCommand}" />
+        <Button Text="Kegler hinzufügen" Command="{Binding OpenAddKeglerViewCommand}" />
     </StackLayout>
 </ContentPage>

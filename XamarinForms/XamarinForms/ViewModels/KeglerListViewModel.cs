@@ -14,14 +14,13 @@ namespace XamarinForms.ViewModels
         private DataService _dataService;
         private INavigation _navigation;
 
-        public ICommand AddKeglerCommand
+        public ICommand OpenAddKeglerViewCommand
         {
             get
             {
                 return new Command(async () =>
                 {
-                    //Do something here
-                    await _navigation.PushAsync(new AddKeglerView(_dataService));
+                    await _navigation.PushModalAsync(new AddKeglerView(_dataService));
                 });
             }
         }
@@ -47,7 +46,6 @@ namespace XamarinForms.ViewModels
 
             Names = _dataService.GetNames();
         }
-
  
         public event PropertyChangedEventHandler PropertyChanged;
 
