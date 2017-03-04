@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using XamarinForms.Services;
+using XamarinForms.Helpers;
 
 namespace XamarinForms.ViewModels
 {
@@ -30,17 +31,18 @@ namespace XamarinForms.ViewModels
             await _navigation.PopModalAsync();
         }
 
-        string vorname = "Hans";
         public string Vorname
         {
             get
             {
-                return vorname;
+                return Settings.Vorname;
             }
 
             set
             {
-                vorname = value;
+                if(Settings.Vorname == value)
+                    return;
+                Settings.Vorname = value;
                 OnPropertyChanged();
             }
         }
