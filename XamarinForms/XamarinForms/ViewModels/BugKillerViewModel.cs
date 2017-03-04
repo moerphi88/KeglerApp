@@ -15,6 +15,7 @@ namespace XamarinForms.ViewModels
     {
         private DataService _dataService;
         private INavigation _navigation;
+
         private int _activeKegler = 0;
         private bool _isInitialRound = true;
 
@@ -95,9 +96,6 @@ namespace XamarinForms.ViewModels
 
 
         }
-
-
-
 
         public ICommand RefreshCommand
         {

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using XamarinForms.Interfaces;
+using XamarinForms.Helpers;
 
 namespace XamarinForms.Services
 {
@@ -12,19 +13,33 @@ namespace XamarinForms.Services
 
         public DataService()
         {
-            _names = new ObservableCollection<Kegler>();
-            _names.Add(new Kegler { _isActive = false, _leben = 8, _initialWurf = 0, _imageUri = "bug_full.png", _vorname = "Anja", _nachname = "SL" });
-            _names.Add(new Kegler { _isActive = false, _leben = 8, _initialWurf = 0, _imageUri = "bug_full.png", _vorname = "Johannes", _nachname = "Watermann" });
-        }
-        
-        public void AddNames(Kegler k)
-        {
-            _names.Add(k);
+            var list = JsonConvert.DeserializeObject<ObservableCollection<Kegler>>(Settings.KeglerList);
+            if (list != null)
+                _names = list;
+            else
+            {
+                _names = new ObservableCollection<Kegler>();
+                _names.Add(new Kegler { _isActive = false, _leben = 8, _initialWurf = 0, _imageUri = "bug_full.png", _vorname = "Anja", _nachname = "SL" });
+                _names.Add(new Kegler { _isActive = false, _leben = 8, _initialWurf = 0, _imageUri = "bug_full.png", _vorname = "Johannes", _nachname = "Watermann" });
+                Settings.KeglerList = JsonConvert.SerializeObject(_names);
+            }
         }
 
         public ObservableCollection<Kegler> GetNames()
         {
             return _names;
+        }
+
+        public void AddNames(Kegler k)
+        {
+            _names.Add(k);
+            Settings.KeglerList = JsonConvert.SerializeObject(_names);
+        }
+
+        public void DeleteName(Kegler k)
+        {
+            _names.Remove(k);
+            Settings.KeglerList = JsonConvert.SerializeObject(_names);
         }
 
         public void EvaluateWurf(int wurf)
@@ -90,19 +105,7 @@ namespace XamarinForms.Services
             }
         }
 
-        public void DeleteName(Kegler k)
-        {
-            _names.Remove(k);
-        }
 
-        public string SerializeList()
-        {
-            return JsonConvert.SerializeObject(_names);
-        }
 
-        public void DeserializeList(string kegler_list)
-        {
-            _names = JsonConvert.DeserializeObject<ObservableCollection<Kegler>>(kegler_list);
-        }
     }
 }

@@ -29,7 +29,7 @@ namespace XamarinForms.Helpers
         private static readonly string VornameDefault = "Hans";
 
         const string KeglerListKey = "keglerlist";
-        private static readonly string KeglerListDefault = "[{'_imageUri':'bug_full.png','_vorname':'Katze 1','_nachname':'sjdksjd','_initialWurf':0,'_leben':0,'_isActive':false}]";
+        private static readonly string KeglerListDefault = "";
 
         #endregion
 
