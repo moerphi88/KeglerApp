@@ -40,7 +40,6 @@
     </Compile>
     <Compile Include="Controls\ListView.cs" />
     <Compile Include="Helpers\Settings.cs" />
-    <Compile Include="Helper\BugKillerGameHelper.cs" />
     <Compile Include="Interfaces\IDataServices.cs" />
     <Compile Include="Views\BugKillerView.xaml.cs">
       <DependentUpon>BugKillerView.xaml</DependentUpon>
@@ -129,6 +128,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helper\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
