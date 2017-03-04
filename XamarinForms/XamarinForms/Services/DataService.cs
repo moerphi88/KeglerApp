@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using XamarinForms.Interfaces;
@@ -92,6 +93,16 @@ namespace XamarinForms.Services
         public void DeleteName(Kegler k)
         {
             _names.Remove(k);
+        }
+
+        public string SerializeList()
+        {
+            return JsonConvert.SerializeObject(_names);
+        }
+
+        public void DeserializeList(string kegler_list)
+        {
+            _names = JsonConvert.DeserializeObject<ObservableCollection<Kegler>>(kegler_list);
         }
     }
 }

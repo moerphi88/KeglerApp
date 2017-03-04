@@ -2,6 +2,7 @@
 using Xamarin.Forms.Xaml;
 using System.Collections.Generic;
 using XamarinForms.Services;
+using XamarinForms.Helper;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace XamarinForms
@@ -22,6 +23,8 @@ namespace XamarinForms
             KeglerList.Add(new Kegler { _imageUri = "bug_seven.png", _vorname = "Katze 2", _nachname = "sjdksjd" });
             KeglerList.Add(new Kegler { _imageUri = "bug_six.png", _vorname = "Katze 3", _nachname = "sjdksjd" });
             KeglerList.Add(new Kegler { _imageUri = "bug_six.png", _vorname = "Katze 4", _nachname = "sjdksjd" });
+
+            //Program p = new Program();
             
             MainPage = new NavigationPage(new Pages.MainPage(dataService));
         }

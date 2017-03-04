@@ -14,5 +14,7 @@ namespace XamarinForms.Interfaces
         void EvaluateWurf(int wurf);
         void UpdateList();
         void DeleteName(Kegler k);
+        string SerializeList();
+        void DeserializeList(string kegler_list);
     }
 }

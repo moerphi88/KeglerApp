@@ -28,10 +28,13 @@ namespace XamarinForms.Helpers
         const string VornameKey = "vorname";
         private static readonly string VornameDefault = "Hans";
 
-    #endregion
+        const string KeglerListKey = "keglerlist";
+        private static readonly string KeglerListDefault = "[{'_imageUri':'bug_full.png','_vorname':'Katze 1','_nachname':'sjdksjd','_initialWurf':0,'_leben':0,'_isActive':false}]";
+
+        #endregion
 
 
-    public static string GeneralSettings
+        public static string GeneralSettings
     {
       get
       {
@@ -52,6 +55,18 @@ namespace XamarinForms.Helpers
             set
             {
                 AppSettings.AddOrUpdateValue<string>(VornameKey, value);
+            }
+        }
+
+        public static string KeglerList
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault<string>(KeglerListKey, KeglerListDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue<string>(KeglerListKey, value);
             }
         }
 
