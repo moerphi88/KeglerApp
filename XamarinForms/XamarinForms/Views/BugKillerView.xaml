@@ -6,20 +6,20 @@
              x:Class="XamarinForms.Views.BugKillerView"
              BackgroundColor="White">
 
-    <!--   <ContentPage.BindingContext>
-        <viewModels:MainViewModel/>
-    </ContentPage.BindingContext> -->
-
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ValueConverter x:Key="valueConverter"></local:ValueConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <StackLayout Orientation="Vertical"
                  Padding="20"
                  Spacing="20">
-
         <Label Text="Bug Killer - Game"
                TextColor="Teal"
                Font="Bold"
                FontSize="30"
                HorizontalOptions="Center"/>
-        <local:ListView   ItemsSource="{Binding Names}"
+        <ListView   ItemsSource="{Binding Names}"
                     HasUnevenRows="true"
                     ItemSelected="Handle_ItemSelected"
                     IsPullToRefreshEnabled="True"
@@ -32,7 +32,8 @@
                             VerticalOptions="FillAndExpand"
                         HorizontalOptions="Fill"
                         Orientation="Horizontal"
-                        Spacing="15">
+                        Spacing="15"
+                            BackgroundColor="{Binding _isActive, Converter={StaticResource valueConverter}}">
                             <Image Source="{Binding _imageUri}"
                                    HeightRequest="70"
                                    WidthRequest="70"
@@ -52,7 +53,7 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </local:ListView>
+        </ListView>
         <StackLayout 
                  Orientation="Horizontal"
                  Padding="5"

@@ -17,6 +17,7 @@ namespace XamarinForms.ViewModels
         public DataService _dataService { get; set; }
         private INavigation _navigation { get; }
         public ICommand IncreaseCountCommand { get; }
+   
 
         public AddKeglerViewModel(DataService dataService, INavigation navigation)
         {
