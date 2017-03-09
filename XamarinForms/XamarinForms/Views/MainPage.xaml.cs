@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using XamarinForms.Services;
+using XamarinForms.ViewModels;
 using XamarinForms.Views;
 
 namespace XamarinForms.Pages
@@ -13,19 +14,8 @@ namespace XamarinForms.Pages
         {
             InitializeComponent();
             dataService = _dataService;
-        }
-
-        async void OnClickStartBugKillerGame(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new BugKillerView(dataService));
-        }
-
-        async void OnClickAddKegler(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new KeglerListView(dataService));
+            BindingContext = new MainPageViewModel(_dataService, this.Navigation);
         }
         
-
-
     }
 }

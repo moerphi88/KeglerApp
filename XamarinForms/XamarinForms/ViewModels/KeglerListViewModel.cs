@@ -39,22 +39,6 @@ namespace XamarinForms.ViewModels
             }
         }
 
-        //public string Vorname
-        //{
-        //    get
-        //    {
-        //        return Settings.Vorname;
-        //    }
-
-        //    set
-        //    {
-        //        if (Settings.Vorname == value)
-        //            return;
-        //        Settings.Vorname = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
-
         public KeglerListViewModel(DataService dataService, INavigation navigation)
         {
             _navigation = navigation;

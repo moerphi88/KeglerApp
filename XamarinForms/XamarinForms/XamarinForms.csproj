@@ -42,6 +42,7 @@
     <Compile Include="Controls\ValueConverter.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Interfaces\IDataServices.cs" />
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="Views\BugKillerView.xaml.cs">
       <DependentUpon>BugKillerView.xaml</DependentUpon>
     </Compile>
@@ -52,7 +53,7 @@
     <Compile Include="Pages\KeglerListPage.xaml.cs">
       <DependentUpon>KeglerListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MainPage.xaml.cs">
+    <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,7 +66,7 @@
     <Compile Include="ViewModels\BugKillerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\MainPage.xaml">
+    <EmbeddedResource Include="Views\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
