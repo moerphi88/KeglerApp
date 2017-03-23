@@ -25,7 +25,5 @@ namespace XamarinForms.Pages
             base.OnAppearing();
             vm.Update();
         }
-
-
     }
 }

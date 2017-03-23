@@ -12,17 +12,12 @@ using XamarinForms.Helpers;
 
 namespace XamarinForms.ViewModels
 {
-    class AddKeglerViewModel : INotifyPropertyChanged
+    class AddKeglerViewModel : BaseViewModel
     {
-        public DataService _dataService { get; set; }
-        private INavigation _navigation { get; }
-        public ICommand IncreaseCountCommand { get; }
-   
+        public ICommand IncreaseCountCommand { get; }   
 
-        public AddKeglerViewModel(DataService dataService, INavigation navigation)
+        public AddKeglerViewModel(DataService dataService, INavigation navigation) : base(dataService,navigation)
         {
-            _dataService = dataService;
-            _navigation = navigation;
             IncreaseCountCommand = new Command(async () => await AddKeglerAsync());
         }
 
@@ -63,14 +58,11 @@ namespace XamarinForms.ViewModels
             }
         }
 
-        #region INotifyPropertyChanges Handler
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        void OnPropertyChanged([CallerMemberName]string propertyName = "") =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); 
-        #endregion
-
+        public override void Update()
+        {
+            base.Update();
+            //todo
+        }
     }
 
 }

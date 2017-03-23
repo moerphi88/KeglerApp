@@ -11,11 +11,8 @@ using System.Threading.Tasks;
 
 namespace XamarinForms.ViewModels
 {
-    public class BugKillerViewModel : INotifyPropertyChanged
+    class BugKillerViewModel : BaseViewModel
     {
-        private DataService _dataService;
-        private INavigation _navigation;
-
         private int _activeKegler = 0;
         private bool _isInitialRound = true;
 
@@ -126,19 +123,9 @@ namespace XamarinForms.ViewModels
             }
         }
 
-        public BugKillerViewModel(DataService dataService, INavigation navigation)
+        public BugKillerViewModel(DataService dataService, INavigation navigation) : base(dataService,navigation)
         {
-            _navigation = navigation;
-            _dataService = dataService;
-
             Names = _dataService.GetNames();
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

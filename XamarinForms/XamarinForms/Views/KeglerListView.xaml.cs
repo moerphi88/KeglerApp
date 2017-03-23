@@ -15,12 +15,14 @@ namespace XamarinForms.Views
     public partial class KeglerListView : ContentPage
     {
         DataService dataService;
+        private BaseViewModel vm { get; set; }
 
         public KeglerListView(DataService _dataService)
         {
             InitializeComponent();
             dataService = _dataService;
-            BindingContext = new KeglerListViewModel(_dataService, this.Navigation);
+            vm = new KeglerListViewModel(_dataService, this.Navigation);
+            BindingContext = vm;
         }
 
         public void OnDelete(object sender, EventArgs e)
@@ -28,6 +30,12 @@ namespace XamarinForms.Views
             var mi = ((MenuItem)sender);
             var kegler = (Kegler)mi.CommandParameter;
             dataService.DeleteName(kegler);
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            vm.Update();
         }
     }
 }

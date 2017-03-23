@@ -11,7 +11,7 @@ namespace XamarinForms.Views
     public partial class BugKillerView : ContentPage
     {
         DataService dataService;
-        BugKillerViewModel vm;
+        private BugKillerViewModel vm { get; set; }
 
         public BugKillerView(DataService _dataService)
         {
@@ -52,6 +52,11 @@ namespace XamarinForms.Views
 
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            vm.Update();
+        }
 
     }
 }
