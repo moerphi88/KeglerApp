@@ -11,6 +11,18 @@ namespace XamarinForms.Services
     {
         public ObservableCollection<Kegler> _names;
 
+        private bool buttonIsActive = false;
+        public bool IsButtonActive {
+            get {
+                buttonIsActive = !buttonIsActive;
+                return buttonIsActive;
+            }
+            set
+            {
+                buttonIsActive = value;
+            }
+        }
+
         public DataService()
         {
             var list = JsonConvert.DeserializeObject<ObservableCollection<Kegler>>(Settings.KeglerList);

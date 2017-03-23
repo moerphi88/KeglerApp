@@ -13,16 +13,9 @@ using XamarinForms.Views;
 
 namespace XamarinForms.ViewModels
 {
-    class MainPageViewModel : INotifyPropertyChanged
-    {
-        public DataService _dataService { get; set; }
-        private INavigation _navigation { get; }   
-
-        public MainPageViewModel(DataService dataService, INavigation navigation)
-        {
-            _dataService = dataService;
-            _navigation = navigation;
-        }
+    class MainPageViewModel : BaseViewModel
+    { 
+        public MainPageViewModel(DataService dataService, INavigation navigation) : base(dataService,navigation){}
 
         public ICommand OpenBugKillerViewCommand
         {
@@ -30,7 +23,6 @@ namespace XamarinForms.ViewModels
             {
                 return new Command(async () =>
                 {
-                    ShowButton = !ShowButton;
                     await _navigation.PushAsync(new BugKillerView(_dataService));
                 });
             }
@@ -62,14 +54,10 @@ namespace XamarinForms.ViewModels
             }
         }
 
-        #region INotifyPropertyChanges Handler
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        void OnPropertyChanged([CallerMemberName]string propertyName = "") =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); 
-        #endregion
-
+        public override void Update()
+        {
+            ShowButton = _dataService.IsButtonActive;
+        }
     }
 
 }

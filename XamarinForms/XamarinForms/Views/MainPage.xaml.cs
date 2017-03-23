@@ -9,13 +9,23 @@ namespace XamarinForms.Pages
     public partial class MainPage : ContentPage
     {
         public DataService dataService { get; set; }
+        private BaseViewModel vm { get; set; }
         
         public MainPage(DataService _dataService)
         {
             InitializeComponent();
             dataService = _dataService;
-            BindingContext = new MainPageViewModel(_dataService, this.Navigation);
+
+            vm = new MainPageViewModel(_dataService, this.Navigation);
+            BindingContext = vm;  
         }
-        
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            vm.Update();
+        }
+
+
     }
 }

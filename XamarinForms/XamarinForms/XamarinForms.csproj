@@ -42,6 +42,7 @@
     <Compile Include="Controls\ValueConverter.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Interfaces\IDataServices.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="Views\BugKillerView.xaml.cs">
       <DependentUpon>BugKillerView.xaml</DependentUpon>

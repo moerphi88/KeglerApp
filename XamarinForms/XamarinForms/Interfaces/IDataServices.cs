@@ -9,6 +9,7 @@ namespace XamarinForms.Interfaces
 {
     interface IDataServices
     {
+        
         ObservableCollection<Kegler> GetNames();
         void AddNames(Kegler k);
         void EvaluateWurf(int wurf);
