@@ -1,5 +1,10 @@
 ﻿namespace XamarinForms
 {
+    /*
+     * _imageUri: bug_full.png, bug_seven.png, bug_six.png ....
+     * _leben: 8 - 0
+     * */
+
     public class Kegler
     {
         public string _imageUri { get; set; }

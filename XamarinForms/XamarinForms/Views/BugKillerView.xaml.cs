@@ -57,6 +57,5 @@ namespace XamarinForms.Views
             base.OnAppearing();
             vm.Update();
         }
-
     }
 }

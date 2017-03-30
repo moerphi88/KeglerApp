@@ -23,6 +23,14 @@ namespace XamarinForms.Services
             }
         }
 
+        private bool _isInitialRound = true;
+        public bool IsInitialRound
+        {
+            get { return _isInitialRound; }
+            set { _isInitialRound  = value; }
+        }
+
+
         public DataService()
         {
             var list = JsonConvert.DeserializeObject<ObservableCollection<Kegler>>(Settings.KeglerList);
@@ -117,7 +125,18 @@ namespace XamarinForms.Services
             }
         }
 
-
+        public void StartNewGame()
+        {
+            //set each Kegler to its default parameter
+            foreach(Kegler k in _names)
+            {
+                k._imageUri = "bug_full.png";
+                k._isActive = false;
+                k._leben = 8;
+                k._initialWurf = 0;
+            }
+            IsInitialRound = true;
+        }
 
     }
 }

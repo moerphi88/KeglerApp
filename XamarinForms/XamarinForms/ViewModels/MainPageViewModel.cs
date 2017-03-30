@@ -23,6 +23,19 @@ namespace XamarinForms.ViewModels
             {
                 return new Command(async () =>
                 {
+                    _dataService.StartNewGame();
+                    await _navigation.PushAsync(new BugKillerView(_dataService));
+                });
+            }
+        }
+
+        public ICommand ContinueBugKillerViewCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    _dataService.IsInitialRound = false;
                     await _navigation.PushAsync(new BugKillerView(_dataService));
                 });
             }

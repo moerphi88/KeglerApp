@@ -14,8 +14,8 @@ namespace XamarinForms.ViewModels
     class BugKillerViewModel : BaseViewModel
     {
         private int _activeKegler = 0;
-        private bool _isInitialRound = true;
 
+        private bool isInitialRound = true;
         private ObservableCollection<Kegler> _names;
 
         private string kegelWurf = "0";
@@ -54,31 +54,32 @@ namespace XamarinForms.ViewModels
 
         async void NextKegler()
         {
+
             var wurf = Convert.ToInt32(KegelWurf);
             if (wurf >= 0 && wurf <= 9)
             {
 
-                if (_isInitialRound)
+                if (isInitialRound)
                 {
                     _names[_activeKegler]._initialWurf = Convert.ToInt32(kegelWurf);
                 }
-                if (!_isInitialRound) //Das Spiel beginnt!
+                if (!isInitialRound) //Das Spiel beginnt!
                 {
                     _names[_activeKegler]._isActive = true;
                     _dataService.EvaluateWurf(Convert.ToInt32(kegelWurf));
                 }
                 _activeKegler++;
 
-                if (_isInitialRound && _activeKegler == Names.Count)
+                if (isInitialRound && _activeKegler == Names.Count)
                 {
                     //Irgendwann einmal ein Dialog hier anzeigen
                     var answer = await App.Current.MainPage.DisplayAlert("Initialrunde beendet!", "Möchtet Ihr die Runde nochmal machen?", "Yes", "No");
-                    if (!answer) _isInitialRound = false;
+                    if (!answer) isInitialRound = false;
                 }
 
                 if (_activeKegler >= Names.Count) _activeKegler = 0;
 
-                _dataService.UpdateList();
+                _dataService.UpdateList();                
 
                 //If we start the activeKegler from the begining, we must set the last element of the list to not active. Otherwise we can take the last one with activeKegler - 1
                 if (_activeKegler == 0) _names[Names.Count - 1]._isActive = false;
@@ -89,9 +90,6 @@ namespace XamarinForms.ViewModels
                 await App.Current.MainPage.DisplayAlert("Halt! Stop!", "Wusstest du nicht, dass beim Kegeln nur 9 Kegel fallen können?! Angeber!", "Ok");
                 KegelWurf = "0";
             }
-
-
-
         }
 
         public ICommand RefreshCommand
@@ -123,9 +121,16 @@ namespace XamarinForms.ViewModels
             }
         }
 
-        public BugKillerViewModel(DataService dataService, INavigation navigation) : base(dataService,navigation)
+        public BugKillerViewModel(DataService dataService, INavigation navigation) : base(dataService, navigation)
         {
             Names = _dataService.GetNames();
+            isInitialRound = _dataService.IsInitialRound;
+        }
+
+        public override void Update()
+        {
+            base.Update();
+            //todo
         }
     }
 }

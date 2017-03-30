@@ -15,6 +15,7 @@
                      Spacing="15">
             <Label Text="Welcome to ListView Test" />
             <Button Text="Start Bug Killer Game" Command="{ Binding OpenBugKillerViewCommand}" />
+            <Button Text="Continue Bug Killer Game" Command="{ Binding ContinueBugKillerViewCommand}" />
             <Button IsEnabled="{Binding ShowButton}" Text="Spieler hinzufügen" Command="{Binding OpenKeglerListViewCommand}" />
         </StackLayout>
     </ContentPage.Content>
