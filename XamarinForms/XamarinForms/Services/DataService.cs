@@ -108,6 +108,7 @@ namespace XamarinForms.Services
             }
         }
 
+        // Notlösung, damit sich die Liste im Spiel BugKillerView aktualisiert, wenn ich einen Kegelwurf gemacht habe!
         public void UpdateList()
         {
             ObservableCollection<Kegler> temp = new ObservableCollection<Kegler>();
@@ -136,6 +137,11 @@ namespace XamarinForms.Services
                 k._initialWurf = 0;
             }
             IsInitialRound = true;
+        }
+
+        public void SaveGame()
+        {
+
         }
 
     }

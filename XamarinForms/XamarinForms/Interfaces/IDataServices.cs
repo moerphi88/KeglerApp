@@ -17,5 +17,6 @@ namespace XamarinForms.Interfaces
         void DeleteName(Kegler k);
 
         void StartNewGame();
+        void SaveGame();
     }
 }
