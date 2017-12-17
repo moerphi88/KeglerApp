@@ -92,21 +92,6 @@ namespace XamarinForms.ViewModels
             }
         }
 
-        public ICommand RefreshCommand
-        {
-            get
-            {
-                return new Command(async () =>
-                {
-                    IsRefreshing = true;
-
-                    await Task.Run(() => _dataService.UpdateList());
-
-                    IsRefreshing = false;
-                });
-            }
-        }
-
         public ObservableCollection<Kegler> Names
         {
             get
