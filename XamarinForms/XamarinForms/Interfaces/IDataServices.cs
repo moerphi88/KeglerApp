@@ -13,9 +13,7 @@ namespace XamarinForms.Interfaces
 
         void AddNames(Kegler k);
         void EvaluateWurf(int wurf);
-        void UpdateList();
         void DeleteName(Kegler k);
-
         void StartNewGame();
         void SaveGame();
     }
