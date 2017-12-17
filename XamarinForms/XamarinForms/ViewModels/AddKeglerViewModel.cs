@@ -23,7 +23,7 @@ namespace XamarinForms.ViewModels
 
         async Task AddKeglerAsync()
         {
-            _dataService.AddNames(new Kegler { _isActive = false, _leben = 8, _initialWurf = 0, _imageUri = "bug_full.png", _vorname = Vorname, _nachname = Nachname });
+            _dataService.AddNames(new Kegler { _isActive = false, Leben = 8, InitialWurf = 0, ImageUri = "bug_full.png", _vorname = Vorname, _nachname = Nachname });
             await _navigation.PopModalAsync();
         }
 

@@ -9,6 +9,20 @@ namespace XamarinForms.Services
 {
     public class DataService : IDataServices
     {
+        public DataService()
+        {
+            var list = JsonConvert.DeserializeObject<ObservableCollection<Kegler>>(Settings.KeglerList);
+            if (list != null)
+                _names = list;
+            else
+            {
+                _names = new ObservableCollection<Kegler>();
+                _names.Add(new Kegler { _isActive = false, Leben = 8, InitialWurf = 0, ImageUri = "bug_full.png", _vorname = "Anja", _nachname = "SL" });
+                _names.Add(new Kegler { _isActive = false, Leben = 8, InitialWurf = 0, ImageUri = "bug_full.png", _vorname = "Johannes", _nachname = "Watermann" });
+                Settings.KeglerList = JsonConvert.SerializeObject(_names);
+            }
+        }
+
         public ObservableCollection<Kegler> _names;
 
         private bool buttonIsActive = false;
@@ -28,21 +42,6 @@ namespace XamarinForms.Services
         {
             get { return _isInitialRound; }
             set { _isInitialRound  = value; }
-        }
-
-
-        public DataService()
-        {
-            var list = JsonConvert.DeserializeObject<ObservableCollection<Kegler>>(Settings.KeglerList);
-            if (list != null)
-                _names = list;
-            else
-            {
-                _names = new ObservableCollection<Kegler>();
-                _names.Add(new Kegler { _isActive = false, _leben = 8, _initialWurf = 0, _imageUri = "bug_full.png", _vorname = "Anja", _nachname = "SL" });
-                _names.Add(new Kegler { _isActive = false, _leben = 8, _initialWurf = 0, _imageUri = "bug_full.png", _vorname = "Johannes", _nachname = "Watermann" });
-                Settings.KeglerList = JsonConvert.SerializeObject(_names);
-            }
         }
 
         public ObservableCollection<Kegler> GetNames()
@@ -71,7 +70,7 @@ namespace XamarinForms.Services
                 {
                     if (kegler._isActive)
                     {
-                        kegler._leben--;
+                        kegler.Leben--;
                         ChangeImage(kegler);
                     }
                 }
@@ -82,9 +81,9 @@ namespace XamarinForms.Services
                 //Normaler Wurf
                 foreach (Kegler kegler in _names)
                 {
-                    if (kegler._initialWurf == wurf)
+                    if (kegler.InitialWurf == wurf)
                     {
-                        kegler._leben--;
+                        kegler.Leben--;
                         ChangeImage(kegler);
                     }
                 }
@@ -93,36 +92,18 @@ namespace XamarinForms.Services
 
         private void ChangeImage(Kegler kegler)
         {
-            switch (kegler._leben)
+            switch (kegler.Leben)
             {
-                case 8: kegler._imageUri = "bug_full.png"; break;
-                case 7: kegler._imageUri = "bug_seven.png"; break;
-                case 6: kegler._imageUri = "bug_six.png"; break;
-                case 5: kegler._imageUri = "bug_five.png"; break;
-                case 4: kegler._imageUri = "bug_four.png"; break;
-                case 3: kegler._imageUri = "bug_three.png"; break;
-                case 2: kegler._imageUri = "bug_two.png"; break;
-                case 1: kegler._imageUri = "bug_one.png"; break;
-                case 0: kegler._imageUri = "bug_dead.png"; break;
-                default: kegler._leben = 0; break;
-            }
-        }
-
-        // Notlösung, damit sich die Liste im Spiel BugKillerView aktualisiert, wenn ich einen Kegelwurf gemacht habe!
-        public void UpdateList()
-        {
-            ObservableCollection<Kegler> temp = new ObservableCollection<Kegler>();
-
-            foreach (Kegler item in _names)
-            {
-                temp.Add(item);
-            }
-
-            _names.Clear();
-
-            foreach (Kegler item in temp)
-            {
-                _names.Add(item);
+                case 8: kegler.ImageUri = "bug_full.png"; break;
+                case 7: kegler.ImageUri = "bug_seven.png"; break;
+                case 6: kegler.ImageUri = "bug_six.png"; break;
+                case 5: kegler.ImageUri = "bug_five.png"; break;
+                case 4: kegler.ImageUri = "bug_four.png"; break;
+                case 3: kegler.ImageUri = "bug_three.png"; break;
+                case 2: kegler.ImageUri = "bug_two.png"; break;
+                case 1: kegler.ImageUri = "bug_one.png"; break;
+                case 0: kegler.ImageUri = "bug_dead.png"; break;
+                default: kegler.Leben = 0; break;
             }
         }
 
@@ -131,17 +112,17 @@ namespace XamarinForms.Services
             //set each Kegler to its default parameter
             foreach(Kegler k in _names)
             {
-                k._imageUri = "bug_full.png";
+                k.ImageUri = "bug_full.png";
                 k._isActive = false;
-                k._leben = 8;
-                k._initialWurf = 0;
+                k.Leben = 8;
+                k.InitialWurf = 0;
             }
             IsInitialRound = true;
         }
 
         public void SaveGame()
         {
-
+            throw new NotImplementedException();
         }
 
     }

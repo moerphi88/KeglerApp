@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
 using XamarinForms.Services;
@@ -12,12 +9,19 @@ namespace XamarinForms.ViewModels
 {
     class BugKillerViewModel : BaseViewModel
     {
-        private int _activeKegler = 0;
 
+        public BugKillerViewModel(DataService dataService, INavigation navigation) : base(dataService, navigation)
+        {
+            Names = _dataService.GetNames();
+            isInitialRound = _dataService.IsInitialRound;
+        }
+
+        private int _activeKegler = 0;
         private bool isInitialRound = true;
         private ObservableCollection<Kegler> _names;
-
         private string kegelWurf = "0";
+        private bool _isRefreshing = false;
+
         public string KegelWurf
         {
             get
@@ -31,8 +35,7 @@ namespace XamarinForms.ViewModels
                 OnPropertyChanged();
             }
         }
-
-        private bool _isRefreshing = false;
+        
         public bool IsRefreshing
         {
             get { return _isRefreshing; }
@@ -60,7 +63,7 @@ namespace XamarinForms.ViewModels
 
                 if (isInitialRound)
                 {
-                    _names[_activeKegler]._initialWurf = Convert.ToInt32(kegelWurf);
+                    _names[_activeKegler].InitialWurf = Convert.ToInt32(kegelWurf);
                 }
                 if (!isInitialRound) //Das Spiel beginnt!
                 {
@@ -76,9 +79,7 @@ namespace XamarinForms.ViewModels
                     if (!answer) isInitialRound = false;
                 }
 
-                if (_activeKegler >= Names.Count) _activeKegler = 0;
-
-                _dataService.UpdateList();                
+                if (_activeKegler >= Names.Count) _activeKegler = 0;            
 
                 //If we start the activeKegler from the begining, we must set the last element of the list to not active. Otherwise we can take the last one with activeKegler - 1
                 if (_activeKegler == 0) _names[Names.Count - 1]._isActive = false;
@@ -118,12 +119,6 @@ namespace XamarinForms.ViewModels
                 _names = value;
                 OnPropertyChanged();
             }
-        }
-
-        public BugKillerViewModel(DataService dataService, INavigation navigation) : base(dataService, navigation)
-        {
-            Names = _dataService.GetNames();
-            isInitialRound = _dataService.IsInitialRound;
         }
 
         public override void Update()
