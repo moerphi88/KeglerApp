@@ -15,7 +15,10 @@ namespace XamarinForms.ViewModels
 {
     class MainPageViewModel : BaseViewModel
     { 
-        public MainPageViewModel(DataService dataService, INavigation navigation) : base(dataService,navigation){}
+        public MainPageViewModel(DataService dataService, INavigation navigation) : base(dataService,navigation)
+        {
+            
+        }
 
         public ICommand OpenBugKillerViewCommand
         {
@@ -52,24 +55,38 @@ namespace XamarinForms.ViewModels
             }
         }
 
-        private bool showButton = true;
-        public bool ShowButton
+        private bool canAddPlayer = true;
+        public bool CanAddPlayer
         {
             get
             {
-                return showButton;
+                return canAddPlayer;
             }
-
             set
             {
-                showButton = value;
+                canAddPlayer = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool canContinueGame = true;
+        public bool CanContinueGame
+        {
+            get
+            {
+                return canContinueGame;
+            }
+            set
+            {
+                canContinueGame = value;
                 OnPropertyChanged();
             }
         }
 
         public override void Update()
         {
-            ShowButton = _dataService.IsButtonActive;
+            CanAddPlayer = _dataService.addingPlayerIsPossible;
+            CanContinueGame = _dataService.continueGameIsPossible;
         }
     }
 

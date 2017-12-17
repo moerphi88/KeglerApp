@@ -22,9 +22,7 @@
         <ListView   ItemsSource="{Binding Names}"
                     HasUnevenRows="true"
                     ItemSelected="Handle_ItemSelected"
-                    IsPullToRefreshEnabled="True"
-                    RefreshCommand="{Binding RefreshCommand}"
-                    IsRefreshing="{Binding IsRefreshing}">
+                    IsPullToRefreshEnabled="False" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -57,13 +55,23 @@
         <StackLayout 
                  Orientation="Horizontal"
                  Padding="5"
-                 Spacing="5">
-            <Entry Text="{Binding KegelWurf, Mode=TwoWay}"
-                   Keyboard="Numeric"
-                   TextChanged="Handle_KegelWurfEntry"
-                   />
-            <Button Text="Next" 
-                    Command="{Binding NextClickedCommand}" />
+                 Spacing="5"
+                HorizontalOptions="CenterAndExpand">            
+            <Picker Title="Kegelwurf" SelectedIndexChanged="OnPickerSelectedIndexChanged">
+                <Picker.Items>
+                    <x:String>0</x:String>
+                    <x:String>1</x:String>
+                    <x:String>2</x:String>
+                    <x:String>3</x:String>
+                    <x:String>4</x:String>
+                    <x:String>5</x:String>
+                    <x:String>6</x:String>
+                    <x:String>7</x:String>
+                    <x:String>8</x:String>
+                    <x:String>9</x:String>
+                </Picker.Items>
+            </Picker>
+            <Button Text="Next" Command="{Binding NextClickedCommand}" />
         </StackLayout>
     </StackLayout>
 </ContentPage>

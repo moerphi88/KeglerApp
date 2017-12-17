@@ -4,6 +4,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using XamarinForms.Services;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace XamarinForms.ViewModels
 {
@@ -100,6 +101,8 @@ namespace XamarinForms.ViewModels
             base.Update();
             //todo
         }
+
+        List<String> Numbers = null;
     }
 }
 

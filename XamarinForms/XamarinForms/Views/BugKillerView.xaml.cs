@@ -24,6 +24,19 @@ namespace XamarinForms.Views
         //Standard constructor
         public BugKillerView() { }
 
+        // Workaround, weil ich den Picker nicht binden konnte. https://developer.xamarin.com/guides/xamarin-forms/user-interface/picker/populating-itemssource/
+        void OnPickerSelectedIndexChanged(object sender, EventArgs e)
+        {
+            var picker = (Picker)sender;
+            int selectedIndex = picker.SelectedIndex;
+
+            if (selectedIndex != -1)
+            {
+                vm.KegelWurf = picker.Items[selectedIndex];
+                //System.Diagnostics.Debug.WriteLine(picker.Items[selectedIndex]);
+            }
+        }
+
         void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem == null)

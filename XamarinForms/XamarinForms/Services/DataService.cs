@@ -27,17 +27,9 @@ namespace XamarinForms.Services
 
         public ObservableCollection<Kegler> _names;
 
-        private bool buttonIsActive = false;
-        public bool IsButtonActive {
-            get {
-                buttonIsActive = !buttonIsActive;
-                return buttonIsActive;
-            }
-            set
-            {
-                buttonIsActive = value;
-            }
-        }
+        public bool addingPlayerIsPossible = true;
+        public bool continueGameIsPossible = false;
+        private bool gameIsActive = false;
 
         private bool _isInitialRound = true;
         public bool IsInitialRound
@@ -88,6 +80,7 @@ namespace XamarinForms.Services
                     }
                 }
             }
+
         }
 
         public void StartNewGame()
