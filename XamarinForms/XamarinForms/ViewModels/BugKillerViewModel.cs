@@ -20,7 +20,6 @@ namespace XamarinForms.ViewModels
         private bool isInitialRound = true;
         private ObservableCollection<Kegler> _names;
         private string kegelWurf = "0";
-        private bool _isRefreshing = false;
 
         public string KegelWurf
         {
@@ -36,16 +35,6 @@ namespace XamarinForms.ViewModels
             }
         }
         
-        public bool IsRefreshing
-        {
-            get { return _isRefreshing; }
-            set
-            {
-                _isRefreshing = value;
-                OnPropertyChanged(nameof(IsRefreshing));
-            }
-        }
-
         public ICommand NextClickedCommand
         {
             get
@@ -75,7 +64,7 @@ namespace XamarinForms.ViewModels
                 if (isInitialRound && _activeKegler == Names.Count)
                 {
                     //Irgendwann einmal ein Dialog hier anzeigen
-                    var answer = await App.Current.MainPage.DisplayAlert("Initialrunde beendet!", "Möchtet Ihr die Runde nochmal machen?", "Yes", "No");
+                    var answer = await App.Current.MainPage.DisplayAlert("Initialrunde beendet!", "Möchtet Ihr die Runde nochmal machen?", "Ja", "Nein");
                     if (!answer) isInitialRound = false;
                 }
 
