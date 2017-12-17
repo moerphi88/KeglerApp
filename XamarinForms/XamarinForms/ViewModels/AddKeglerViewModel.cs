@@ -12,23 +12,18 @@ using XamarinForms.Helpers;
 
 namespace XamarinForms.ViewModels
 {
-    class AddKeglerViewModel : INotifyPropertyChanged
+    class AddKeglerViewModel : BaseViewModel
     {
-        public DataService _dataService { get; set; }
-        private INavigation _navigation { get; }
-        public ICommand IncreaseCountCommand { get; }
-   
+        public ICommand AddKeglerCommand { get; }   
 
-        public AddKeglerViewModel(DataService dataService, INavigation navigation)
+        public AddKeglerViewModel(DataService dataService, INavigation navigation) : base(dataService,navigation)
         {
-            _dataService = dataService;
-            _navigation = navigation;
-            IncreaseCountCommand = new Command(async () => await AddKeglerAsync());
+            AddKeglerCommand = new Command(async () => await AddKeglerAsync());
         }
 
         async Task AddKeglerAsync()
         {
-            _dataService.AddNames(new Kegler { _isActive = false, _leben = 8, _initialWurf = 0, _imageUri = "bug_full.png", _vorname = Vorname, _nachname = Nachname });
+            _dataService.AddNames(new Kegler { _isActive = false, Leben = 8, InitialWurf = 0, ImageUri = "bug_full.png", _vorname = Vorname, _nachname = Nachname });
             await _navigation.PopModalAsync();
         }
 
@@ -63,14 +58,11 @@ namespace XamarinForms.ViewModels
             }
         }
 
-        #region INotifyPropertyChanges Handler
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        void OnPropertyChanged([CallerMemberName]string propertyName = "") =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); 
-        #endregion
-
+        public override void Update()
+        {
+            base.Update();
+            //todo
+        }
     }
 
 }

@@ -1,26 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
 using XamarinForms.Services;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace XamarinForms.ViewModels
 {
-    public class BugKillerViewModel : INotifyPropertyChanged
+    class BugKillerViewModel : BaseViewModel
     {
-        private DataService _dataService;
-        private INavigation _navigation;
+
+        public BugKillerViewModel(DataService dataService, INavigation navigation) : base(dataService, navigation)
+        {
+            Names = _dataService.GetNames();
+            isInitialRound = _dataService.IsInitialRound;
+        }
 
         private int _activeKegler = 0;
-        private bool _isInitialRound = true;
-
+        private bool isInitialRound = true;
         private ObservableCollection<Kegler> _names;
-
         private string kegelWurf = "0";
+
         public string KegelWurf
         {
             get
@@ -34,18 +35,7 @@ namespace XamarinForms.ViewModels
                 OnPropertyChanged();
             }
         }
-
-        private bool _isRefreshing = false;
-        public bool IsRefreshing
-        {
-            get { return _isRefreshing; }
-            set
-            {
-                _isRefreshing = value;
-                OnPropertyChanged(nameof(IsRefreshing));
-            }
-        }
-
+        
         public ICommand NextClickedCommand
         {
             get
@@ -56,31 +46,30 @@ namespace XamarinForms.ViewModels
 
         async void NextKegler()
         {
+
             var wurf = Convert.ToInt32(KegelWurf);
             if (wurf >= 0 && wurf <= 9)
             {
 
-                if (_isInitialRound)
+                if (isInitialRound)
                 {
-                    _names[_activeKegler]._initialWurf = Convert.ToInt32(kegelWurf);
+                    _names[_activeKegler].InitialWurf = Convert.ToInt32(kegelWurf);
                 }
-                if (!_isInitialRound) //Das Spiel beginnt!
+                if (!isInitialRound) //Das Spiel beginnt!
                 {
                     _names[_activeKegler]._isActive = true;
                     _dataService.EvaluateWurf(Convert.ToInt32(kegelWurf));
                 }
                 _activeKegler++;
 
-                if (_isInitialRound && _activeKegler == Names.Count)
+                if (isInitialRound && _activeKegler == Names.Count)
                 {
                     //Irgendwann einmal ein Dialog hier anzeigen
-                    var answer = await App.Current.MainPage.DisplayAlert("Initialrunde beendet!", "Möchtet Ihr die Runde nochmal machen?", "Yes", "No");
-                    if (!answer) _isInitialRound = false;
+                    var answer = await App.Current.MainPage.DisplayAlert("Initialrunde beendet!", "Möchtet Ihr die Runde nochmal machen?", "Ja", "Nein");
+                    if (!answer) isInitialRound = false;
                 }
 
-                if (_activeKegler >= Names.Count) _activeKegler = 0;
-
-                _dataService.UpdateList();
+                if (_activeKegler >= Names.Count) _activeKegler = 0;            
 
                 //If we start the activeKegler from the begining, we must set the last element of the list to not active. Otherwise we can take the last one with activeKegler - 1
                 if (_activeKegler == 0) _names[Names.Count - 1]._isActive = false;
@@ -90,24 +79,6 @@ namespace XamarinForms.ViewModels
             {
                 await App.Current.MainPage.DisplayAlert("Halt! Stop!", "Wusstest du nicht, dass beim Kegeln nur 9 Kegel fallen können?! Angeber!", "Ok");
                 KegelWurf = "0";
-            }
-
-
-
-        }
-
-        public ICommand RefreshCommand
-        {
-            get
-            {
-                return new Command(async () =>
-                {
-                    IsRefreshing = true;
-
-                    await Task.Run(() => _dataService.UpdateList());
-
-                    IsRefreshing = false;
-                });
             }
         }
 
@@ -125,20 +96,13 @@ namespace XamarinForms.ViewModels
             }
         }
 
-        public BugKillerViewModel(DataService dataService, INavigation navigation)
+        public override void Update()
         {
-            _navigation = navigation;
-            _dataService = dataService;
-
-            Names = _dataService.GetNames();
+            base.Update();
+            //todo
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        List<String> Numbers = null;
     }
 }
 

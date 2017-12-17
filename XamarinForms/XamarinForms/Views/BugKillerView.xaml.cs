@@ -11,7 +11,7 @@ namespace XamarinForms.Views
     public partial class BugKillerView : ContentPage
     {
         DataService dataService;
-        BugKillerViewModel vm;
+        private BugKillerViewModel vm { get; set; }
 
         public BugKillerView(DataService _dataService)
         {
@@ -23,6 +23,19 @@ namespace XamarinForms.Views
 
         //Standard constructor
         public BugKillerView() { }
+
+        // Workaround, weil ich den Picker nicht binden konnte. https://developer.xamarin.com/guides/xamarin-forms/user-interface/picker/populating-itemssource/
+        void OnPickerSelectedIndexChanged(object sender, EventArgs e)
+        {
+            var picker = (Picker)sender;
+            int selectedIndex = picker.SelectedIndex;
+
+            if (selectedIndex != -1)
+            {
+                vm.KegelWurf = picker.Items[selectedIndex];
+                //System.Diagnostics.Debug.WriteLine(picker.Items[selectedIndex]);
+            }
+        }
 
         void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
@@ -52,6 +65,10 @@ namespace XamarinForms.Views
 
         }
 
-
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            vm.Update();
+        }
     }
 }

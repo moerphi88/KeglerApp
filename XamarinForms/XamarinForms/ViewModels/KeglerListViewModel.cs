@@ -8,11 +8,9 @@ using XamarinForms.Services;
 
 namespace XamarinForms.ViewModels
 {
-    public class KeglerListViewModel : INotifyPropertyChanged
+    class KeglerListViewModel : BaseViewModel
     {
         private ObservableCollection<Kegler> _names;
-        private DataService _dataService;
-        private INavigation _navigation;
 
         public ICommand OpenAddKeglerViewCommand
         {
@@ -39,35 +37,9 @@ namespace XamarinForms.ViewModels
             }
         }
 
-        //public string Vorname
-        //{
-        //    get
-        //    {
-        //        return Settings.Vorname;
-        //    }
-
-        //    set
-        //    {
-        //        if (Settings.Vorname == value)
-        //            return;
-        //        Settings.Vorname = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
-
-        public KeglerListViewModel(DataService dataService, INavigation navigation)
+        public KeglerListViewModel(DataService dataService, INavigation navigation) : base(dataService, navigation)
         {
-            _navigation = navigation;
-            _dataService = dataService;
-
             Names = _dataService.GetNames();
-        }
- 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

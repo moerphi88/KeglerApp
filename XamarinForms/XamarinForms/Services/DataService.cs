@@ -7,10 +7,10 @@ using XamarinForms.Helpers;
 
 namespace XamarinForms.Services
 {
+    //Aktuell ist der DataService noch mein einziger Service. Er befüllt die Kegler Liste und wird auch benutzt um Kegler hinzuzufügen bzw. zu löschen. 
+    //Außerdem wird hier noch jeder 
     public class DataService : IDataServices
     {
-        public ObservableCollection<Kegler> _names;
-
         public DataService()
         {
             var list = JsonConvert.DeserializeObject<ObservableCollection<Kegler>>(Settings.KeglerList);
@@ -19,10 +19,23 @@ namespace XamarinForms.Services
             else
             {
                 _names = new ObservableCollection<Kegler>();
-                _names.Add(new Kegler { _isActive = false, _leben = 8, _initialWurf = 0, _imageUri = "bug_full.png", _vorname = "Anja", _nachname = "SL" });
-                _names.Add(new Kegler { _isActive = false, _leben = 8, _initialWurf = 0, _imageUri = "bug_full.png", _vorname = "Johannes", _nachname = "Watermann" });
+                _names.Add(new Kegler { _isActive = false, Leben = 8, InitialWurf = 0, ImageUri = "bug_full.png", _vorname = "Anja", _nachname = "SL" });
+                _names.Add(new Kegler { _isActive = false, Leben = 8, InitialWurf = 0, ImageUri = "bug_full.png", _vorname = "Johannes", _nachname = "Watermann" });
                 Settings.KeglerList = JsonConvert.SerializeObject(_names);
             }
+        }
+
+        public ObservableCollection<Kegler> _names;
+
+        public bool addingPlayerIsPossible = true;
+        public bool continueGameIsPossible = false;
+        private bool gameIsActive = false;
+
+        private bool _isInitialRound = true;
+        public bool IsInitialRound
+        {
+            get { return _isInitialRound; }
+            set { _isInitialRound  = value; }
         }
 
         public ObservableCollection<Kegler> GetNames()
@@ -42,6 +55,7 @@ namespace XamarinForms.Services
             Settings.KeglerList = JsonConvert.SerializeObject(_names);
         }
 
+        // EvaluateWurf beinhaltet die Spielregeln
         public void EvaluateWurf(int wurf)
         {
             //Pudel
@@ -51,61 +65,41 @@ namespace XamarinForms.Services
                 {
                     if (kegler._isActive)
                     {
-                        kegler._leben--;
-                        ChangeImage(kegler);
+                        kegler.Leben--;
                     }
                 }
-
             }
             else
             {
                 //Normaler Wurf
                 foreach (Kegler kegler in _names)
                 {
-                    if (kegler._initialWurf == wurf)
+                    if (kegler.InitialWurf == wurf)
                     {
-                        kegler._leben--;
-                        ChangeImage(kegler);
+                        kegler.Leben--;
                     }
                 }
             }
+
         }
 
-        private void ChangeImage(Kegler kegler)
+        public void StartNewGame()
         {
-            switch (kegler._leben)
+            //set each Kegler to its default parameter
+            foreach(Kegler k in _names)
             {
-                case 8: kegler._imageUri = "bug_full.png"; break;
-                case 7: kegler._imageUri = "bug_seven.png"; break;
-                case 6: kegler._imageUri = "bug_six.png"; break;
-                case 5: kegler._imageUri = "bug_five.png"; break;
-                case 4: kegler._imageUri = "bug_four.png"; break;
-                case 3: kegler._imageUri = "bug_three.png"; break;
-                case 2: kegler._imageUri = "bug_two.png"; break;
-                case 1: kegler._imageUri = "bug_one.png"; break;
-                case 0: kegler._imageUri = "bug_dead.png"; break;
-                default: kegler._leben = 0; break;
+                k.ImageUri = "bug_full.png";
+                k._isActive = false;
+                k.Leben = 8;
+                k.InitialWurf = 0;
             }
+            IsInitialRound = true;
         }
 
-        public void UpdateList()
+        public void SaveGame()
         {
-            ObservableCollection<Kegler> temp = new ObservableCollection<Kegler>();
-
-            foreach (Kegler item in _names)
-            {
-                temp.Add(item);
-            }
-
-            _names.Clear();
-
-            foreach (Kegler item in temp)
-            {
-                _names.Add(item);
-            }
+            throw new NotImplementedException();
         }
-
-
 
     }
 }

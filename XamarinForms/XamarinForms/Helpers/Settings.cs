@@ -21,15 +21,18 @@ namespace XamarinForms.Helpers
 
     #region Setting Constants
 
-    private const string SettingsKey = "settings_key";
-    private static readonly string SettingsDefault = string.Empty;
-
+        private const string SettingsKey = "settings_key";
+        private static readonly string SettingsDefault = string.Empty;
         
         const string VornameKey = "vorname";
         private static readonly string VornameDefault = "Hans";
 
         const string KeglerListKey = "keglerlist";
         private static readonly string KeglerListDefault = "";
+
+        const string KeglerListSavedGameKey = "keglerlistsavedgame";
+        private static readonly string KeglerListSavedGameDefault = "";
+
 
         #endregion
 
@@ -67,6 +70,18 @@ namespace XamarinForms.Helpers
             set
             {
                 AppSettings.AddOrUpdateValue<string>(KeglerListKey, value);
+            }
+        }
+
+        public static string KeglerListSavedGame
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault<string>(KeglerListSavedGameKey, KeglerListSavedGameDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue<string>(KeglerListSavedGameKey, value);
             }
         }
 

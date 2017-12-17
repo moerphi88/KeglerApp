@@ -36,7 +36,7 @@
                 <Label Text="Nachname:" />
                 <Entry Text="{Binding Nachname}"/>
             </StackLayout>
-            <Button Text="Click Me" Command="{Binding IncreaseCountCommand}"/>
+            <Button Text="Click Me" Command="{Binding AddKeglerCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

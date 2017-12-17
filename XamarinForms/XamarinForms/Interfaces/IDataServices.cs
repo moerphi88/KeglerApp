@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 namespace XamarinForms.Interfaces
 {
     interface IDataServices
-    {
+    {        
         ObservableCollection<Kegler> GetNames();
+
         void AddNames(Kegler k);
         void EvaluateWurf(int wurf);
-        void UpdateList();
         void DeleteName(Kegler k);
+        void StartNewGame();
+        void SaveGame();
     }
 }
