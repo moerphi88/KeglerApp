@@ -71,7 +71,6 @@ namespace XamarinForms.Services
                     if (kegler._isActive)
                     {
                         kegler.Leben--;
-                        ChangeImage(kegler);
                     }
                 }
 
@@ -84,7 +83,6 @@ namespace XamarinForms.Services
                     if (kegler.InitialWurf == wurf)
                     {
                         kegler.Leben--;
-                        ChangeImage(kegler);
                     }
                 }
             }

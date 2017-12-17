@@ -47,7 +47,20 @@ namespace XamarinForms
             }
             set
             {
-                _leben = value;
+                _leben = value;                
+                switch (_leben)
+                {
+                    case 8: ImageUri = "bug_full.png"; break;
+                    case 7: ImageUri = "bug_seven.png"; break;
+                    case 6: ImageUri = "bug_six.png"; break;
+                    case 5: ImageUri = "bug_five.png"; break;
+                    case 4: ImageUri = "bug_four.png"; break;
+                    case 3: ImageUri = "bug_three.png"; break;
+                    case 2: ImageUri = "bug_two.png"; break;
+                    case 1: ImageUri = "bug_one.png"; break;
+                    case 0: ImageUri = "bug_dead.png"; break;
+                    default: _leben = 0; break;
+                }
                 OnPropertyChanged();
             }
         }
