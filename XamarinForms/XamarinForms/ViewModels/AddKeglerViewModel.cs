@@ -14,11 +14,11 @@ namespace XamarinForms.ViewModels
 {
     class AddKeglerViewModel : BaseViewModel
     {
-        public ICommand IncreaseCountCommand { get; }   
+        public ICommand AddKeglerCommand { get; }   
 
         public AddKeglerViewModel(DataService dataService, INavigation navigation) : base(dataService,navigation)
         {
-            IncreaseCountCommand = new Command(async () => await AddKeglerAsync());
+            AddKeglerCommand = new Command(async () => await AddKeglerAsync());
         }
 
         async Task AddKeglerAsync()

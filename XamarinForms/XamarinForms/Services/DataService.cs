@@ -7,6 +7,8 @@ using XamarinForms.Helpers;
 
 namespace XamarinForms.Services
 {
+    //Aktuell ist der DataService noch mein einziger Service. Er befüllt die Kegler Liste und wird auch benutzt um Kegler hinzuzufügen bzw. zu löschen. 
+    //Außerdem wird hier noch jeder 
     public class DataService : IDataServices
     {
         public DataService()
@@ -61,6 +63,7 @@ namespace XamarinForms.Services
             Settings.KeglerList = JsonConvert.SerializeObject(_names);
         }
 
+        // EvaluateWurf beinhaltet die Spielregeln
         public void EvaluateWurf(int wurf)
         {
             //Pudel
@@ -73,7 +76,6 @@ namespace XamarinForms.Services
                         kegler.Leben--;
                     }
                 }
-
             }
             else
             {
@@ -85,23 +87,6 @@ namespace XamarinForms.Services
                         kegler.Leben--;
                     }
                 }
-            }
-        }
-
-        private void ChangeImage(Kegler kegler)
-        {
-            switch (kegler.Leben)
-            {
-                case 8: kegler.ImageUri = "bug_full.png"; break;
-                case 7: kegler.ImageUri = "bug_seven.png"; break;
-                case 6: kegler.ImageUri = "bug_six.png"; break;
-                case 5: kegler.ImageUri = "bug_five.png"; break;
-                case 4: kegler.ImageUri = "bug_four.png"; break;
-                case 3: kegler.ImageUri = "bug_three.png"; break;
-                case 2: kegler.ImageUri = "bug_two.png"; break;
-                case 1: kegler.ImageUri = "bug_one.png"; break;
-                case 0: kegler.ImageUri = "bug_dead.png"; break;
-                default: kegler.Leben = 0; break;
             }
         }
 
